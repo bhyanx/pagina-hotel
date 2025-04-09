@@ -278,22 +278,6 @@
     </a>
 
     <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-         // Close mobile menu when clicking a link
-        const mobileLinks = mobileMenu.getElementsByTagName('a');
-        for (let link of mobileLinks) {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        }
-        
         // Script para abrir WhatsApp (si es necesario)
         function openWhatsApp() {
             // Reemplaza con tu número de WhatsApp y mensaje predeterminado si lo deseas
