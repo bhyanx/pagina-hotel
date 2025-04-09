@@ -22,6 +22,38 @@
     --shadow-color: rgba(0, 0, 0, 0.25);
 }
 
+/* Estilos para la animación de línea en los enlaces */
+.nav-link, 
+.footer-link,
+.link-animated {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after, 
+.footer-link::after,
+.link-animated::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #f59e0b; /* Color hotel-accent */
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after, 
+.footer-link:hover::after,
+.link-animated:hover::after {
+    width: 100%;
+}
+
+/* Ajuste para enlaces del footer que tienen color de texto específico */
+.footer-link::after {
+    background-color: #f59e0b; /* Color hotel-accent */
+}
+
 html {
     scroll-behavior: smooth;
 }
