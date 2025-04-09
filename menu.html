@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú del Restaurante - Ocean View Hotel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'hotel-blue': '#1e40af',
+                        'hotel-white': '#ffffff',
+                        'hotel-accent': '#f59e0b',
+                        'hotel-light': '#f3f4f6',
+                        'hotel-dark': '#1f2937',
+                        'hotel-primary': '#3b82f6',
+                        'hotel-secondary': '#10b981'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body class="font-sans bg-hotel-white text-gray-800">
+    <!-- Page Loader -->
+    <div id="page-loader" class="fixed inset-0 z-[100] flex items-center justify-center bg-white dark:bg-slate-800">
+        <div class="loader-spinner border-4 border-t-4 border-gray-200 dark:border-slate-600 border-t-hotel-primary dark:border-t-blue-400 rounded-full w-12 h-12 animate-spin"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="bg-gradient-to-r from-hotel-blue to-hotel-primary text-white shadow-lg fixed w-full z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html#home"><img src="img/logo/logo.png" alt="Ocean View Hotel Logo" class="h-10 sm:h-12 md:h-14 mr-4"></a>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html#home" class="hover:text-hotel-accent transition duration-300">Inicio</a>
+                <a href="index.html#rooms" class="hover:text-hotel-accent transition duration-300">Habitaciones</a>
+                <a href="services.html" class="hover:text-hotel-accent transition duration-300">Servicios</a>
+                <a href="actividades.html" class="hover:text-hotel-accent transition duration-300">Actividades</a>
+                <a href="index.html#gallery" class="hover:text-hotel-accent transition duration-300">Galería</a>
+                <a href="index.html#contact" class="hover:text-hotel-accent transition duration-300">Contacto</a>
+                <a href="politicas.html" class="hover:text-hotel-accent transition duration-300">Políticas</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <!-- Dark Mode Toggle Button -->
+                <button id="dark-mode-toggle" class="text-white text-xl hover:text-hotel-accent transition duration-300">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-white text-2xl hover:text-hotel-accent transition duration-300">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden bg-gradient-to-b from-hotel-blue to-hotel-primary text-white py-4 px-4 md:hidden">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html#home" class="hover:text-hotel-accent transition duration-300">Inicio</a>
+                <a href="index.html#rooms" class="hover:text-hotel-accent transition duration-300">Habitaciones</a>
+                <a href="services.html" class="hover:text-hotel-accent transition duration-300">Servicios</a>
+                <a href="actividades.html" class="hover:text-hotel-accent transition duration-300">Actividades</a>
+                <a href="index.html#gallery" class="hover:text-hotel-accent transition duration-300">Galería</a>
+                <a href="index.html#contact" class="hover:text-hotel-accent transition duration-300">Contacto</a>
+                <a href="politicas.html" class="hover:text-hotel-accent transition duration-300">Políticas</a>
+                <!-- Dark Mode Toggle in Mobile Menu -->
+                <button id="dark-mode-toggle-mobile" class="mt-4 text-left w-full py-2 px-3 rounded hover:bg-hotel-blue flex items-center">
+                    <i class="fas fa-moon mr-2"></i> Modo Oscuro
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="pt-24 sm:pt-28 pb-16">
+        <section class="py-12 sm:py-20 bg-hotel-light dark:bg-slate-800">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12 sm:mb-16 animate-on-scroll fade-in-up">
+                    <h1 class="text-4xl sm:text-5xl font-bold text-hotel-dark dark:text-white mb-4">Menú del Restaurante</h1>
+                    <p class="text-gray-600 dark:text-slate-400 max-w-3xl mx-auto text-lg">Descubra nuestra selección de platos y bebidas, elaborados con ingredientes frescos y de la más alta calidad.</p>
+                </div>
+
+                <!-- Menú Categories -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Entradas -->
+                    <div class="bg-white dark:bg-slate-700 rounded-2xl shadow-lg p-8 animate-on-scroll fade-in-up">
+                        <h2 class="text-2xl font-bold text-hotel-dark dark:text-white mb-6 border-b-2 border-hotel-accent pb-2">Entradas</h2>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-hotel-primary dark:text-blue-400">Carpaccio de Res</h3>
+                                    <p class="text-gray-600 dark:text-slate-300 text-sm">Finas láminas de res con aceite de oliva, alcaparras y rúcula</p>
+                                </div>
+                                <span class="text-hotel-accent font-semibold">S/. 45.00</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-hotel-primary dark:text-blue-400">Ceviche de Pescado</h3>
+                                    <p class="text-gray-600 dark:text-slate-300 text-sm">Pescado fresco en limón, ají y cebolla roja</p>
+                                </div>
+                                <span class="text-hotel-accent font-semibold">S/. 35.00</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-hotel-primary dark:text-blue-400">Sopa de Langostinos</h3>
+                                    <p class="text-gray-600 dark:text-slate-300 text-sm">Caldo de mariscos con langostinos y verduras</p>
+                                </div>
+                                <span class="text-hotel-accent font-semibold">S/. 40.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Platos Principales -->
+                    <div class="bg-white dark:bg-slate-700 rounded-2xl shadow-lg p-8 animate-on-scroll fade-in-up" style="animation-delay: 0.1s;">
+                        <h2 class="text-2xl font-bold text-hotel-dark dark:text-white mb-6 border-b-2 border-hotel-accent pb-2">Platos Principales</h2>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-hotel-primary dark:text-blue-400">Lomo Saltado</h3>
+                                    <p class="text-gray-600 dark:text-slate-300 text-sm">Trozos de lomo salteados con cebolla, tomate y papas fritas</p>
+                                </div>
+                                <span class="text-hotel-accent font-semibold">S/. 65.00</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-hotel-primary dark:text-blue-400">Pescado a la Parrilla</h3>
+                                    <p class="text-gray-600 dark:text-slate-300 text-sm">Pescado fresco a la parrilla con salsa de hierbas</p>
+                                </div>
+                                <span class="text-hotel-accent font-semibold">S/. 55.00</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-hotel-primary dark:text-blue-400">Pasta al Pesto</h3>
+                                    <p class="text-gray-600 dark:text-slate-300 text-sm">Pasta fresca con salsa de albahaca y piñones</p>
+                                </div>
+                                <span class="text-hotel-accent font-semibold">S/. 45.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Postres -->
+                    <div class="bg-white dark:bg-slate-700 rounded-2xl shadow-lg p-8 animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
+                        <h2 class="text-2xl font-bold text-hotel-dark dark:text-white mb-6 border-b-2 border-hotel-accent pb-2">Postres</h2>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-hotel-primary dark:text-blue-400">Suspiro a la Limeña</h3>
+                                    <p class="text-gray-600 dark:text-slate-300 text-sm">Postre tradicional peruano de merengue y manjar blanco</p>
+                                </div>
+                                <span class="text-hotel-accent font-semibold">S/. 25.00</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-hotel-primary dark:text-blue-400">Tiramisú</h3>
+                                    <p class="text-gray-600 dark:text-slate-300 text-sm">Postre italiano con café y mascarpone</p>
+                                </div>
+                                <span class="text-hotel-accent font-semibold">S/. 30.00</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-hotel-primary dark:text-blue-400">Helado de Lucuma</h3>
+                                    <p class="text-gray-600 dark:text-slate-300 text-sm">Helado artesanal de lucuma con caramelo</p>
+                                </div>
+                                <span class="text-hotel-accent font-semibold">S/. 20.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bebidas -->
+                    <div class="bg-white dark:bg-slate-700 rounded-2xl shadow-lg p-8 animate-on-scroll fade-in-up" style="animation-delay: 0.3s;">
+                        <h2 class="text-2xl font-bold text-hotel-dark dark:text-white mb-6 border-b-2 border-hotel-accent pb-2">Bebidas</h2>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-hotel-primary dark:text-blue-400">Pisco Sour</h3>
+                                    <p class="text-gray-600 dark:text-slate-300 text-sm">Cóctel tradicional peruano con pisco, limón y clara de huevo</p>
+                                </div>
+                                <span class="text-hotel-accent font-semibold">S/. 25.00</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-hotel-primary dark:text-blue-400">Chicha Morada</h3>
+                                    <p class="text-gray-600 dark:text-slate-300 text-sm">Bebida tradicional peruana de maíz morado</p>
+                                </div>
+                                <span class="text-hotel-accent font-semibold">S/. 15.00</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-hotel-primary dark:text-blue-400">Vino Tinto</h3>
+                                    <p class="text-gray-600 dark:text-slate-300 text-sm">Selección de vinos tintos de la región</p>
+                                </div>
+                                <span class="text-hotel-accent font-semibold">S/. 35.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Desayunos -->
+                    <div class="bg-white dark:bg-slate-700 rounded-2xl shadow-lg p-8 animate-on-scroll fade-in-up" style="animation-delay: 0.4s;">
+                        <h2 class="text-2xl font-bold text-hotel-dark dark:text-white mb-6 border-b-2 border-hotel-accent pb-2">Desayunos</h2>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-hotel-primary dark:text-blue-400">Desayuno Americano</h3>
+                                    <p class="text-gray-600 dark:text-slate-300 text-sm">Huevos, pan, mantequilla, jugo y café</p>
+                                </div>
+                                <span class="text-hotel-accent font-semibold">S/. 35.00</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-hotel-primary dark:text-blue-400">Desayuno Peruano</h3>
+                                    <p class="text-gray-600 dark:text-slate-300 text-sm">Pan con palta, huevo, jugo y café</p>
+                                </div>
+                                <span class="text-hotel-accent font-semibold">S/. 30.00</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-hotel-primary dark:text-blue-400">Desayuno Continental</h3>
+                                    <p class="text-gray-600 dark:text-slate-300 text-sm">Pan, mermelada, jugo y café</p>
+                                </div>
+                                <span class="text-hotel-accent font-semibold">S/. 25.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Especialidades -->
+                    <div class="bg-white dark:bg-slate-700 rounded-2xl shadow-lg p-8 animate-on-scroll fade-in-up" style="animation-delay: 0.5s;">
+                        <h2 class="text-2xl font-bold text-hotel-dark dark:text-white mb-6 border-b-2 border-hotel-accent pb-2">Especialidades</h2>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-hotel-primary dark:text-blue-400">Parrilla para Dos</h3>
+                                    <p class="text-gray-600 dark:text-slate-300 text-sm">Selección de carnes a la parrilla con guarniciones</p>
+                                </div>
+                                <span class="text-hotel-accent font-semibold">S/. 120.00</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-hotel-primary dark:text-blue-400">Mariscada</h3>
+                                    <p class="text-gray-600 dark:text-slate-300 text-sm">Variedad de mariscos frescos con salsa especial</p>
+                                </div>
+                                <span class="text-hotel-accent font-semibold">S/. 95.00</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-hotel-primary dark:text-blue-400">Paella Valenciana</h3>
+                                    <p class="text-gray-600 dark:text-slate-300 text-sm">Arroz con mariscos y pollo al estilo español</p>
+                                </div>
+                                <span class="text-hotel-accent font-semibold">S/. 75.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nota sobre Precios -->
+                <div class="mt-12 text-center text-gray-600 dark:text-slate-400">
+                    <p>Los precios están en Soles Peruanos (PEN) e incluyen IGV. Consulte con nuestro personal sobre opciones vegetarianas y sin gluten.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-hotel-blue to-hotel-primary text-white py-12 sm:py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
+                <div>
+                    <a href="index.html#home"><img src="img/logo-white.png" alt="Ocean View Hotel Logo" class="h-14 mb-6"></a>
+                    <p class="text-blue-100">Experiencias inolvidables en un entorno de lujo y confort frente al mar.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Enlaces rápidos</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html#home" class="text-blue-100 hover:text-hotel-accent transition duration-300">Inicio</a></li>
+                        <li><a href="index.html#rooms" class="text-blue-100 hover:text-hotel-accent transition duration-300">Habitaciones</a></li>
+                        <li><a href="services.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Servicios</a></li>
+                        <li><a href="actividades.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Actividades</a></li>
+                        <li><a href="index.html#gallery" class="text-blue-100 hover:text-hotel-accent transition duration-300">Galería</a></li>
+                        <li><a href="index.html#contact" class="text-blue-100 hover:text-hotel-accent transition duration-300">Contacto</a></li>
+                        <li><a href="politicas.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Políticas y FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Servicios Destacados</h3>
+                    <ul class="space-y-3">
+                        <li><a href="services.html#restaurant" class="text-blue-100 hover:text-hotel-accent transition duration-300">Restaurante</a></li>
+                        <li><a href="services.html#spa" class="text-blue-100 hover:text-hotel-accent transition duration-300">Spa & Bienestar</a></li>
+                        <li><a href="services.html#pool" class="text-blue-100 hover:text-hotel-accent transition duration-300">Piscina Infinita</a></li>
+                        <li><a href="services.html#concierge" class="text-blue-100 hover:text-hotel-accent transition duration-300">Conserjería</a></li>
+                        <li><a href="index.html#contact" class="text-blue-100 hover:text-hotel-accent transition duration-300">Eventos y Reuniones</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Boletín</h3>
+                    <p class="text-blue-100 mb-6">Suscríbase para recibir ofertas exclusivas y novedades.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Su email" class="p-4 rounded-l-lg w-full focus:outline-none text-gray-800 dark:bg-slate-600 dark:text-white dark:placeholder-slate-400">
+                        <button type="submit" class="bg-hotel-accent hover:bg-hotel-primary px-6 rounded-r-lg transition duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-blue-800/30 mt-8 sm:mt-12 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center">
+                <p class="text-blue-100 text-center sm:text-left">&copy; 2025 Ocean View Hotel. Todos los derechos reservados.</p>
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="#" class="text-blue-100 hover:text-hotel-accent transition duration-300">Términos</a>
+                    <a href="#" class="text-blue-100 hover:text-hotel-accent transition duration-300">Privacidad</a>
+                    <a href="politicas.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Políticas</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <button id="chat-button" class="chat-button">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div id="chat-container">
+            <div class="chat-header">
+                <h3>Asistente Virtual</h3>
+                <button id="close-chat">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="chat-messages"></div>
+            <div class="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Escribe tu mensaje...">
+                <button id="send-button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            <div class="whatsapp-section">
+                <button class="whatsapp-button" onclick="openWhatsApp()">
+                    <i class="fab fa-whatsapp"></i>
+                    Chatear por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <a href="#" id="back-to-top-btn" class="fixed bottom-5 left-5 z-50 p-3 bg-hotel-accent text-white rounded-full shadow-lg hover:bg-hotel-primary transition duration-300 opacity-0 visibility-hidden translate-y-4">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="js/chat.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 

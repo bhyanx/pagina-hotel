@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios - Ocean View Hotel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'hotel-blue': '#1e40af',
+                        'hotel-white': '#ffffff',
+                        'hotel-accent': '#f59e0b',
+                        'hotel-light': '#f3f4f6',
+                        'hotel-dark': '#1f2937',
+                        'hotel-primary': '#3b82f6',
+                        'hotel-secondary': '#10b981'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body class="font-sans bg-hotel-white text-gray-800">
+     <!-- Page Loader -->
+    <div id="page-loader" class="fixed inset-0 z-[100] flex items-center justify-center bg-white dark:bg-slate-800">
+        <div class="loader-spinner border-4 border-t-4 border-gray-200 dark:border-slate-600 border-t-hotel-primary dark:border-t-blue-400 rounded-full w-12 h-12 animate-spin"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="bg-gradient-to-r from-hotel-blue to-hotel-primary text-white shadow-lg fixed w-full z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html#home"><img src="img/logo/logo.png" alt="Ocean View Hotel Logo" class="h-10 sm:h-12 md:h-14 mr-4"></a>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html#home" class="hover:text-hotel-accent transition duration-300">Inicio</a>
+                <a href="index.html#rooms" class="hover:text-hotel-accent transition duration-300">Habitaciones</a>
+                <a href="#" class="text-hotel-accent font-semibold">Servicios</a> <!-- Link activo -->
+                <a href="actividades.html" class="hover:text-hotel-accent transition duration-300">Actividades</a>
+                <a href="index.html#gallery" class="hover:text-hotel-accent transition duration-300">Galería</a>
+                <a href="index.html#contact" class="hover:text-hotel-accent transition duration-300">Contacto</a>
+                <a href="politicas.html" class="hover:text-hotel-accent transition duration-300">Políticas</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                 <!-- Dark Mode Toggle Button -->
+                <button id="dark-mode-toggle" class="text-white text-xl hover:text-hotel-accent transition duration-300">
+                    <i class="fas fa-moon"></i> <!-- Initial icon -->
+                </button>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-white text-2xl hover:text-hotel-accent transition duration-300">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden bg-gradient-to-b from-hotel-blue to-hotel-primary text-white py-4 px-4 md:hidden">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html#home" class="hover:text-hotel-accent transition duration-300">Inicio</a>
+                <a href="index.html#rooms" class="hover:text-hotel-accent transition duration-300">Habitaciones</a>
+                <a href="#" class="text-hotel-accent font-semibold">Servicios</a> <!-- Link activo -->
+                <a href="actividades.html" class="hover:text-hotel-accent transition duration-300">Actividades</a>
+                <a href="index.html#gallery" class="hover:text-hotel-accent transition duration-300">Galería</a>
+                <a href="index.html#contact" class="hover:text-hotel-accent transition duration-300">Contacto</a>
+                <a href="politicas.html" class="hover:text-hotel-accent transition duration-300">Políticas</a>
+                 <!-- Dark Mode Toggle in Mobile Menu -->
+                <button id="dark-mode-toggle-mobile" class="mt-4 text-left w-full py-2 px-3 rounded hover:bg-hotel-blue flex items-center">
+                     <i class="fas fa-moon mr-2"></i> Modo Oscuro
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Services Section -->
+    <main class="pt-24 sm:pt-28 pb-16">
+        <section class="py-12 sm:py-20 bg-hotel-light">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12 sm:mb-16 animate-on-scroll fade-in-up">
+                    <h1 class="text-4xl sm:text-5xl font-bold text-hotel-dark mb-4">Nuestros Servicios Exclusivos</h1>
+                    <p class="text-gray-600 max-w-3xl mx-auto text-lg">En Ocean View Hotel, nos dedicamos a ofrecerle una estancia llena de confort y experiencias memorables. Descubra la gama de servicios diseñados para su disfrute.</p>
+                </div>
+
+                <!-- Servicio: Restaurante Gourmet - Layout 1 (Imagen Izquierda) -->
+                <div id="restaurant" class="mb-16 grid md:grid-cols-2 gap-8 md:gap-12 items-center bg-white rounded-2xl shadow-lg overflow-hidden p-8 md:p-0 animate-on-scroll fade-in-up">
+                    <div class="md:order-1">
+                        <img src="img/gallery/hotel-galeria-3.png" alt="Restaurante Gourmet" class="w-full h-full object-cover rounded-lg md:rounded-l-lg md:rounded-r-none">
+                    </div>
+                    <div class="md:order-2 md:p-12">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-hotel-accent w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-utensils text-white text-xl"></i>
+                            </div>
+                            <h2 class="text-3xl font-bold text-hotel-dark">Restaurante Gourmet</h2>
+                        </div>
+                        <p class="text-gray-600 mb-4">Deleite su paladar en nuestro exclusivo restaurante, donde nuestros chefs expertos combinan ingredientes locales frescos con técnicas culinarias innovadoras. Ofrecemos una variedad de platos que van desde la cocina internacional hasta especialidades regionales.</p>
+                        <p class="text-gray-600 mb-4">Disfrute de desayunos buffet, almuerzos a la carta y cenas elegantes con vistas panorámicas al océano. Contamos con opciones vegetarianas, veganas y sin gluten.</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Horario: Desayuno (7-10 AM), Almuerzo (12-3 PM), Cena (6-10 PM)</li>
+                            <li>Código de vestimenta: Casual elegante para la cena</li>
+                            <li>Se recomienda reservar</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Servicio: Spa & Bienestar - Layout 2 (Imagen Derecha, Fondo Alterno) -->
+                <div id="spa" class="mb-16 grid md:grid-cols-2 gap-8 md:gap-12 items-center bg-hotel-light rounded-2xl shadow-lg overflow-hidden p-8 md:p-0 scroll-mt-28 animate-on-scroll fade-in-up">
+                    <div class="md:order-2">
+                         <img src="img/gallery/hotel-galeria-4.png" alt="Spa & Bienestar" class="w-full h-full object-cover rounded-lg md:rounded-r-lg md:rounded-l-none">
+                    </div>
+                   <div class="md:order-1 md:p-12">
+                         <div class="flex items-center mb-4">
+                            <div class="bg-hotel-accent w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-spa text-white text-xl"></i>
+                            </div>
+                            <h2 class="text-3xl font-bold text-hotel-dark">Spa & Bienestar</h2>
+                        </div>
+                        <p class="text-gray-600 mb-4">Encuentre la serenidad en nuestro completo spa. Ofrecemos una amplia gama de tratamientos diseñados para relajar cuerpo y mente, desde masajes terapéuticos hasta faciales rejuvenecedores y envolturas corporales.</p>
+                        <p class="text-gray-600 mb-4">Nuestras instalaciones incluyen sauna, baño de vapor, jacuzzi y zonas de relajación. Permita que nuestros terapeutas expertos le guíen en un viaje hacia el bienestar total.</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Tratamientos faciales y corporales</li>
+                            <li>Masajes relajantes y terapéuticos</li>
+                            <li>Paquetes de spa disponibles</li>
+                            <li>Reservas anticipadas recomendadas</li>
+                        </ul>
+                    </div>
+                </div>
+
+                 <!-- Servicio: Piscina Infinita - Layout 3 (Texto Centrado, Icono Grande) -->
+                 <div id="pool" class="mb-16 text-center bg-white rounded-2xl shadow-lg overflow-hidden p-8 md:p-16 scroll-mt-28 animate-on-scroll fade-in-up">
+                     <div class="flex justify-center mb-6">
+                        <div class="bg-hotel-accent w-20 h-20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-swimming-pool text-white text-4xl"></i>
+                        </div>
+                    </div>
+                    <h2 class="text-3xl font-bold text-hotel-dark mb-4">Piscina Infinita</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto mb-4">Sumérjase en nuestra espectacular piscina infinita mientras disfruta de las impresionantes vistas al océano. Es el lugar perfecto para relajarse bajo el sol, leer un libro o simplemente desconectar.</p>
+                    <p class="text-gray-600 max-w-2xl mx-auto mb-6">Contamos con cómodas tumbonas, sombrillas y servicio de bar junto a la piscina, donde podrá disfrutar de refrescantes cócteles y aperitivos ligeros.</p>
+                     <ul class="inline-block text-left list-disc list-inside text-gray-600 space-y-1">
+                        <li>Abierta de 8 AM a 8 PM</li>
+                        <li>Toallas disponibles para huéspedes</li>
+                        <li>Servicio de bar en la piscina (11 AM - 6 PM)</li>
+                    </ul>
+                     <!-- Opcional: Imagen pequeña o icono adicional -->
+                     <img src="img/gallery/hotel-galeria-2.png" alt="Piscina Infinita" class="w-full h-64 object-cover rounded-lg mt-8">
+                </div>
+
+                 <!-- Servicio: Conserjería, Fitness, Eventos, Room Service - Layout 4 (Grid de Iconos/Tarjetas Pequeñas) -->
+                 <div class="mb-16 scroll-mt-28 animate-on-scroll fade-in-up">
+                     <h2 class="text-3xl font-bold text-hotel-dark text-center mb-12">Más Servicios a su Disposición</h2>
+                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                         <!-- Conserjería Card -->
+                         <div id="concierge" class="bg-white p-6 rounded-2xl shadow-lg text-center group animate-on-scroll fade-in-up">
+                             <div class="inline-block bg-hotel-light p-4 rounded-full mb-4 group-hover:bg-hotel-accent transition duration-300">
+                                 <i class="fas fa-concierge-bell text-3xl text-hotel-primary group-hover:text-white"></i>
+                             </div>
+                             <h3 class="text-xl font-bold text-hotel-dark mb-2">Conserjería 24/7</h3>
+                             <p class="text-gray-600 text-sm">Asistencia personalizada para reservas, tours y cualquier solicitud.</p>
+                         </div>
+                         <!-- Fitness Card -->
+                         <div id="fitness" class="bg-white p-6 rounded-2xl shadow-lg text-center group animate-on-scroll fade-in-up" style="animation-delay: 0.1s;">
+                             <div class="inline-block bg-hotel-light p-4 rounded-full mb-4 group-hover:bg-hotel-accent transition duration-300">
+                                 <i class="fas fa-dumbbell text-3xl text-hotel-primary group-hover:text-white"></i>
+                             </div>
+                             <h3 class="text-xl font-bold text-hotel-dark mb-2">Centro de Fitness</h3>
+                             <p class="text-gray-600 text-sm">Equipamiento moderno disponible 24 horas para mantenerse activo.</p>
+                         </div>
+                         <!-- Eventos Card -->
+                         <div id="events" class="bg-white p-6 rounded-2xl shadow-lg text-center group animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
+                            <div class="inline-block bg-hotel-light p-4 rounded-full mb-4 group-hover:bg-hotel-accent transition duration-300">
+                                 <i class="fas fa-calendar-alt text-3xl text-hotel-primary group-hover:text-white"></i>
+                             </div>
+                             <h3 class="text-xl font-bold text-hotel-dark mb-2">Espacios para Eventos</h3>
+                             <p class="text-gray-600 text-sm">Salones versátiles y equipados para reuniones y celebraciones.</p>
+                         </div>
+                         <!-- Room Service Card -->
+                         <div id="room-service" class="bg-white p-6 rounded-2xl shadow-lg text-center group animate-on-scroll fade-in-up" style="animation-delay: 0.3s;">
+                             <div class="inline-block bg-hotel-light p-4 rounded-full mb-4 group-hover:bg-hotel-accent transition duration-300">
+                                 <i class="fas fa-utensils text-3xl text-hotel-primary group-hover:text-white"></i> <!-- Changed icon -->
+                             </div>
+                             <h3 class="text-xl font-bold text-hotel-dark mb-2">Servicio a la Habitación</h3>
+                             <p class="text-gray-600 text-sm">Disfrute de deliciosos platos en la comodidad de su habitación.</p>
+                         </div>
+                     </div>
+                 </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-hotel-blue to-hotel-primary text-white py-12 sm:py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
+                <div>
+                    <a href="index.html#home"><img src="img/logo-white.png" alt="Ocean View Hotel Logo" class="h-14 mb-6"></a>
+                    <p class="text-blue-100">Experiencias inolvidables en un entorno de lujo y confort frente al mar.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Enlaces rápidos</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html#home" class="text-blue-100 hover:text-hotel-accent transition duration-300">Inicio</a></li>
+                        <li><a href="index.html#rooms" class="text-blue-100 hover:text-hotel-accent transition duration-300">Habitaciones</a></li>
+                        <li><a href="services.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Servicios</a></li>
+                        <li><a href="actividades.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Actividades</a></li>
+                        <li><a href="index.html#gallery" class="text-blue-100 hover:text-hotel-accent transition duration-300">Galería</a></li>
+                        <li><a href="index.html#contact" class="text-blue-100 hover:text-hotel-accent transition duration-300">Contacto</a></li>
+                        <li><a href="politicas.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Políticas y FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Servicios Destacados</h3>
+                    <ul class="space-y-3">
+                        <li><a href="services.html#restaurant" class="text-blue-100 hover:text-hotel-accent transition duration-300">Restaurante</a></li>
+                        <li><a href="services.html#spa" class="text-blue-100 hover:text-hotel-accent transition duration-300">Spa & Bienestar</a></li>
+                        <li><a href="services.html#pool" class="text-blue-100 hover:text-hotel-accent transition duration-300">Piscina Infinita</a></li>
+                        <li><a href="services.html#concierge" class="text-blue-100 hover:text-hotel-accent transition duration-300">Conserjería</a></li>
+                         <li><a href="index.html#contact" class="text-blue-100 hover:text-hotel-accent transition duration-300">Eventos y Reuniones</a></li> <!-- Asumiendo que contacto maneja esto -->
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Boletín</h3>
+                    <p class="text-blue-100 mb-6">Suscríbase para recibir ofertas exclusivas y novedades.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Su email" class="p-4 rounded-l-lg w-full focus:outline-none text-gray-800">
+                        <button type="submit" class="bg-hotel-accent hover:bg-hotel-primary px-6 rounded-r-lg transition duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-blue-800/30 mt-8 sm:mt-12 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center">
+                <p class="text-blue-100 text-center sm:text-left">&copy; 2025 Ocean View Hotel. Todos los derechos reservados.</p>
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="#" class="text-blue-100 hover:text-hotel-accent transition duration-300">Términos</a>
+                    <a href="#" class="text-blue-100 hover:text-hotel-accent transition duration-300">Privacidad</a>
+                    <a href="politicas.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Políticas</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <button id="chat-button" class="chat-button">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div id="chat-container">
+            <div class="chat-header">
+                <h3>Asistente Virtual</h3>
+                <button id="close-chat">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="chat-messages"></div>
+            <div class="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Escribe tu mensaje...">
+                <button id="send-button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+             <div class="whatsapp-section">
+                <button class="whatsapp-button" onclick="openWhatsApp()">
+                    <i class="fab fa-whatsapp"></i>
+                    Chatear por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <a href="#" id="back-to-top-btn" class="fixed bottom-5 left-5 z-50 p-3 bg-hotel-accent text-white rounded-full shadow-lg hover:bg-hotel-primary transition duration-300 opacity-0 visibility-hidden translate-y-4">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+         // Close mobile menu when clicking a link
+        const mobileLinks = mobileMenu.getElementsByTagName('a');
+        for (let link of mobileLinks) {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        }
+        
+        // Script para abrir WhatsApp (si es necesario)
+        function openWhatsApp() {
+            // Reemplaza con tu número de WhatsApp y mensaje predeterminado si lo deseas
+            window.open('https://wa.me/TUNUMERO?text=Hola%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n.', '_blank');
+        }
+    </script>
+     <!-- <script src="js/mercadopago.js"></script> No necesario aquí -->
+    <!-- <script src="js/booking.js"></script> No necesario aquí -->
+    <!-- <script src="js/gallery.js"></script> No necesario aquí -->
+    <script src="js/chat.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 

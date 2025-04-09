@@ -1,0 +1,721 @@
+/* Estilos adicionales para la web del hotel */
+/* styles.css */
+
+/* Fuentes personalizadas */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Variables CSS para temas */
+:root {
+    --bg-primary: #ffffff;
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --border-color: #e5e7eb;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Variables para modo oscuro */
+:root[class~="dark"] {
+    --bg-primary: #1f2937;
+    --text-primary: #ffffff;
+    --text-secondary: #9ca3af;
+    --border-color: #374151;
+    --shadow-color: rgba(0, 0, 0, 0.25);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Efectos de transición */
+.transition {
+    transition: all 0.3s ease;
+}
+
+/* Animaciones para elementos al hacer scroll */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estilos personalizados para componentes */
+.room-card:hover {
+    box-shadow: 0 10px 25px rgba(0, 59, 149, 0.1);
+}
+
+/* Estilo para el formulario de reserva */
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+    border-color: #003b95;
+    box-shadow: 0 0 0 2px rgba(0, 59, 149, 0.2);
+}
+
+/* Estilos para la galería */
+.gallery-image {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.gallery-image:hover {
+    transform: scale(1.02);
+    opacity: 0.9;
+}
+
+/* Personalización de scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #003b95;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #002b70;
+}
+
+/* Modo oscuro para scrollbar */
+.dark ::-webkit-scrollbar-track {
+    background: #1f2937;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: #3b82f6;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: #60a5fa;
+}
+
+/* Transiciones suaves para cambios de tema */
+.transition-theme {
+    transition: background-color 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+/* Ajustes específicos para modo oscuro */
+.dark .bg-white {
+    background-color: #1f2937;
+}
+
+.dark .text-gray-600 {
+    color: #9ca3af;
+}
+
+.dark .border-gray-200 {
+    border-color: #374151;
+}
+
+.dark .shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3),
+                0 4px 6px -2px rgba(0, 0, 0, 0.2);
+}
+
+/* Efectos hover en modo oscuro */
+.dark .hover\:bg-gray-100:hover {
+    background-color: #374151;
+}
+
+.dark .hover\:text-gray-900:hover {
+    color: #f3f4f6;
+}
+
+/* Estilos para botones de acción principales */
+.btn-primary {
+    background-color: #003b95;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #002b70;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 59, 149, 0.2);
+}
+
+/* Overlay para imágenes con efecto de hover */
+.image-overlay {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 59, 149, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-overlay:hover::after {
+    opacity: 1;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    h2 {
+        font-size: 24px;
+    }
+}
+
+/* Global Styles & Transitions */
+body {
+    scroll-behavior: smooth;
+}
+
+a, button, input, select, textarea, .gallery-item, .group {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Keyframes for Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Apply Animations (Example - can be added via JS on scroll or directly for initial load) */
+.animate-fadeInUp {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0; /* Start hidden */
+}
+
+.animate-fadeIn {
+     animation: fadeIn 0.8s ease-out forwards;
+     opacity: 0;
+}
+
+/* Header Enhancements */
+header nav a:hover,
+header button:hover,
+#mobile-menu a:hover {
+    transform: translateY(-2px);
+}
+
+/* Hero Section Enhancements */
+#home h2 {
+    /* animation: fadeInUp 1s ease-out forwards; */
+}
+#home p {
+    /* animation: fadeInUp 1s ease-out 0.3s forwards; */
+    /* opacity: 0; */
+}
+#home .flex a {
+    /* animation: fadeInUp 1s ease-out 0.6s forwards; */
+    /* opacity: 0; */
+}
+#home .flex a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Booking Bar Enhancements */
+#booking input:focus, #booking select:focus {
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.3); /* hotel-accent focus shadow */
+}
+#booking button:hover {
+     transform: scale(1.03);
+     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Section Titles */
+section h2 {
+    /* Consider adding animate-fadeInUp class via JS on scroll */
+}
+section p {
+     /* Consider adding animate-fadeInUp class via JS on scroll */
+}
+
+/* Card Hover Effects (Rooms, Services, Testimonials) */
+/* Refine hover effect - make it slightly subtler */
+.bg-white.rounded-2xl:hover {
+    transform: translateY(-4px); /* Less lift */
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+html.dark .bg-white.rounded-2xl:hover {
+    transform: translateY(-4px);
+     box-shadow: 0 8px 12px -3px rgba(0, 0, 0, 0.25), 0 3px 5px -2px rgba(0, 0, 0, 0.12); /* Adjusted dark shadow */
+}
+/* Keep image scale on hover */
+.bg-white.rounded-2xl:hover img {
+    transform: scale(1.03);
+}
+.bg-white.rounded-2xl img {
+     transition: transform 0.4s ease-in-out;
+}
+
+/* Service Icons Hover - Keep the rotation */
+.group:hover .fa-utensils,
+.group:hover .fa-spa,
+.group:hover .fa-swimming-pool,
+.group:hover .fa-concierge-bell,
+.group:hover .fa-dumbbell, /* Added */
+.group:hover .fa-calendar-alt /* Added */
+{
+    transform: rotate(360deg) scale(1.1);
+}
+
+/* Gallery Item Hover - Keep the scale */
+.gallery-item:hover img {
+     transform: scale(1.1); /* Already implemented */
+}
+.gallery-item .absolute {
+     transition: opacity 0.4s ease-in-out; /* Smooth overlay */
+}
+
+/* Testimonial Hover - Remove explicit hover style if not needed, rely on card base hover */
+
+/* Contact Section - Subtle hover on groups */
+#contact .group:hover .bg-hotel-accent {
+    transform: scale(1.05); /* Smaller scale */
+}
+#contact .group:hover i {
+    transform: rotate(10deg); /* Less rotation */
+}
+#contact form input:focus, #contact form textarea:focus {
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.3); /* hotel-accent focus shadow */
+}
+#contact form button:hover {
+    transform: scale(1.02); /* Less scale */
+    filter: brightness(1.1); /* Add brightness instead of heavy shadow */
+    /* box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); */ /* Remove shadow? */
+}
+html.dark #contact form button:hover {
+     filter: brightness(1.2);
+}
+
+/* Footer Enhancements - Keep text shadow */
+footer a:hover {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+html.dark footer a:hover {
+    text-shadow: 0 0 5px rgba(251, 191, 36, 0.5); /* Use accent color shadow in dark */
+}
+footer form button:hover {
+    transform: scale(1.05); /* Keep slight scale */
+}
+
+/* Chat Widget Animations (already in chat.css, ensure no conflicts) */
+
+/* Tailwind Overrides (if necessary) */
+/* Example: Make transitions faster/slower */
+/* * { transition-duration: 0.2s !important; } */
+
+/* Consider adding scroll-triggered animations with JavaScript (Intersection Observer) */
+/* Example JS concept:
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fadeInUp');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.section-to-animate').forEach(section => {
+    observer.observe(section);
+});
+
+/* Back to Top Button Styles */
+#back-to-top-btn {
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+#back-to-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Page Loader Styles */
+#page-loader {
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+#page-loader.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Fuentes Personalizadas (Si se usan) */
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap'); */
+
+/* --- Color Variables --- */
+:root {
+    --color-bg-light: #ffffff; /* White */
+    --color-bg-secondary-light: #f8fafc; /* gray-50, slightly off-white */
+    --color-text-light: #1f2937; /* gray-800 */
+    --color-text-muted-light: #6b7280; /* gray-500 */
+    --color-border-light: #e5e7eb; /* gray-200 */
+
+    --color-accent: #f59e0b; /* amber-500 */
+    --color-accent-hover: #d97706; /* amber-600 */
+    --color-primary: #3b82f6; /* blue-500 */
+    --color-primary-darker: #1d4ed8; /* blue-700 */
+    --color-primary-hover: #2563eb; /* blue-600 */
+    --color-header-text: #ffffff; /* White */
+}
+
+html.dark {
+    /* Using a softer dark palette - e.g., slate colors */
+    --color-bg-light: #1e293b; /* slate-800 */
+    --color-bg-secondary-light: #334155; /* slate-700 */
+    --color-text-light: #f1f5f9; /* slate-100 */
+    --color-text-muted-light: #94a3b8; /* slate-400 */
+    --color-border-light: #475569; /* slate-600 */
+
+    /* Adjust accent/primary slightly for dark mode if needed */
+    --color-accent: #fcd34d; /* amber-300 - Lighter for dark bg */
+    --color-accent-hover: #fbbf24; /* amber-400 */
+    --color-primary: #60a5fa; /* blue-400 - Lighter */
+    --color-primary-darker: #3b82f6; /* blue-500 */
+    --color-primary-hover: #93c5fd; /* blue-300 */
+}
+
+/* --- Base Styles Application --- */
+body {
+    background-color: var(--color-bg-light);
+    color: var(--color-text-light);
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* --- Tailwind Class Overrides for Dark Mode --- */
+/* We need to override Tailwind utilities */
+
+/* General Backgrounds */
+html.dark .bg-white,
+html.dark .bg-hotel-white {
+    background-color: var(--color-bg-secondary-light); /* Use secondary for cards/sections on main dark bg */
+}
+html.dark .bg-gray-50,
+html.dark .bg-hotel-light {
+    background-color: var(--color-bg-light); /* Use main dark bg for alternate sections */
+}
+
+/* General Text */
+html.dark .text-gray-800,
+html.dark .text-hotel-dark {
+    color: var(--color-text-light);
+}
+html.dark .text-gray-600,
+html.dark .text-gray-500 {
+    color: var(--color-text-muted-light);
+}
+html.dark .text-blue-100 { /* Footer text */
+    color: #cbd5e1; /* slate-300 */
+}
+
+/* General Borders */
+html.dark .border-gray-200 {
+    border-color: var(--color-border-light);
+}
+html.dark .border-blue-800\/30 { /* Footer border */
+     border-color: rgba(96, 165, 250, 0.3); /* Use primary color variable relation */
+}
+
+/* Forms */
+html.dark input,
+html.dark select,
+html.dark textarea {
+    background-color: var(--color-bg-light); /* Slightly darker than card bg */
+    border-color: var(--color-border-light);
+    color: var(--color-text-light);
+}
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+    color: var(--color-text-muted-light);
+}
+/* Consider adding a dark mode arrow for select if needed */
+/* svg color using fill-current and text-color might work */
+html.dark .pointer-events-none {
+     color: var(--color-text-muted-light);
+}
+html.dark input:focus,
+html.dark select:focus,
+html.dark textarea:focus {
+     border-color: var(--color-accent);
+     box-shadow: 0 0 0 2px var(--color-accent);
+     --tw-ring-color: transparent; /* Override default tailwind ring */
+}
+
+/* Buttons */
+html.dark .bg-hotel-accent { background-color: var(--color-accent); color: #1e293b; } /* Dark text on light accent */
+html.dark .bg-hotel-accent:hover { background-color: var(--color-accent-hover); }
+
+html.dark .bg-hotel-primary { background-color: var(--color-primary); color: #1e293b; }
+html.dark .bg-hotel-primary:hover { background-color: var(--color-primary-hover); }
+
+html.dark .bg-hotel-blue { background-color: var(--color-primary-darker); }
+html.dark .bg-hotel-blue:hover { background-color: var(--color-primary); }
+
+html.dark .hover\:text-hotel-blue:hover { color: var(--color-primary); }
+
+html.dark .bg-gray-300 { background-color: var(--color-border-light); color: var(--color-text-light); }
+html.dark .bg-gray-300:hover { background-color: #64748b; } /* slate-500 */
+
+/* Icons */
+html.dark .text-hotel-primary { color: var(--color-primary); }
+html.dark .text-hotel-blue { color: var(--color-primary); }
+html.dark .text-hotel-accent { color: var(--color-accent); }
+html.dark .text-yellow-500 { color: var(--color-accent); } /* Star ratings */
+
+/* Specific Components */
+html.dark #total-price { color: var(--color-accent); }
+
+/* Cards */
+html.dark .bg-white.rounded-2xl {
+    background-color: var(--color-bg-secondary-light);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.1); /* Softer shadow */
+}
+html.dark .bg-white.rounded-2xl.shadow-lg:hover {
+     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+}
+
+/* Chat Widget Adjustments */
+html.dark .chat-widget #chat-container {
+    background-color: var(--color-bg-secondary-light);
+    border-color: var(--color-border-light);
+}
+html.dark .chat-widget .chat-header {
+    background-color: var(--color-bg-light);
+    border-bottom-color: var(--color-border-light);
+}
+html.dark .chat-widget #chat-messages .message.bot {
+    background-color: var(--color-bg-light);
+    color: var(--color-text-light);
+}
+html.dark .chat-widget #chat-messages .message.user {
+    background-color: var(--color-primary);
+    color: #1e293b; /* Dark text on light primary */
+}
+html.dark .chat-widget .chat-input-container input {
+     background-color: var(--color-bg-light);
+}
+
+/* Header/Footer Gradients */
+html.dark header {
+    background: linear-gradient(to right, #1e293b, #334155);
+}
+html.dark footer {
+     background: linear-gradient(to right, #1e293b, #334155);
+}
+html.dark #mobile-menu {
+     background: linear-gradient(to bottom, #1e293b, #334155);
+}
+
+/* Transitions for color changes */
+section, footer, header, input, select, textarea, .bg-white, .bg-gray-50, .bg-hotel-light, .text-gray-800, .text-gray-600, .text-hotel-dark, .border-gray-200, .chat-widget *, .message, button, a {
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out, fill 0.3s ease-in-out; /* Added fill for SVG */
+}
+
+/* Keep other transitions (transform, etc.) */
+.transition { transition-property: all; }
+
+a, button, .gallery-item, .group, #back-to-top-btn {
+    transition-property: all;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+}
+
+/* Remove duplicate body style */
+/* body { 
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth; 
+} */
+
+/* Clean up older styles potentially conflicting */
+/* Remove .fade-in, .btn-primary, .image-overlay if not used or integrated */
+
+/* Keyframes, Animations, Enhancements, BackToTop Button... keep existing */
+
+/* Apply Animations based on visibility */
+.animate-on-scroll {
+    opacity: 0;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Define the animation type - using fadeInUp as default */
+.animate-on-scroll.fade-in-up {
+    transform: translateY(30px);
+}
+
+/* Add other types if needed, e.g., fade-in */
+.animate-on-scroll.fade-in {
+    transform: translateY(0);
+}
+
+/* Trigger animation when .is-visible is added */
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Remove old direct animation application if they exist */
+/* .animate-fadeInUp { ... } */
+/* .animate-fadeIn { ... } */
+
+/* Header Enhancements ... */
+/* Hero Section Enhancements (Remove direct animation application here) */
+#home h2 {
+    /* animation: fadeInUp 1s ease-out forwards; */
+}
+#home p {
+    /* animation: fadeInUp 1s ease-out 0.3s forwards; */
+    /* opacity: 0; */
+}
+#home .flex a {
+    /* animation: fadeInUp 1s ease-out 0.6s forwards; */
+    /* opacity: 0; */
+}
+
+/* Card Hover Effects (Rooms, Services, Testimonials) */
+/* Refine hover effect - make it slightly subtler */
+.bg-white.rounded-2xl:hover {
+    transform: translateY(-4px); /* Less lift */
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+html.dark .bg-white.rounded-2xl:hover {
+    transform: translateY(-4px);
+     box-shadow: 0 8px 12px -3px rgba(0, 0, 0, 0.25), 0 3px 5px -2px rgba(0, 0, 0, 0.12); /* Adjusted dark shadow */
+}
+/* Keep image scale on hover */
+.bg-white.rounded-2xl:hover img {
+    transform: scale(1.03);
+}
+.bg-white.rounded-2xl img {
+     transition: transform 0.4s ease-in-out;
+}
+
+/* Service Icons Hover - Keep the rotation */
+.group:hover .fa-utensils,
+.group:hover .fa-spa,
+.group:hover .fa-swimming-pool,
+.group:hover .fa-concierge-bell,
+.group:hover .fa-dumbbell, /* Added */
+.group:hover .fa-calendar-alt /* Added */
+{
+    transform: rotate(360deg) scale(1.1);
+}
+
+/* Gallery Item Hover - Keep the scale */
+.gallery-item:hover img {
+     transform: scale(1.1); /* Already implemented */
+}
+.gallery-item .absolute {
+     transition: opacity 0.4s ease-in-out; /* Smooth overlay */
+}
+
+/* Testimonial Hover - Remove explicit hover style if not needed, rely on card base hover */
+
+/* Contact Section - Subtle hover on groups */
+#contact .group:hover .bg-hotel-accent {
+    transform: scale(1.05); /* Smaller scale */
+}
+#contact .group:hover i {
+    transform: rotate(10deg); /* Less rotation */
+}
+
+/* Button hover - Make slightly subtler */
+#booking button:hover,
+#contact form button:hover,
+#services .text-center a:hover {
+     transform: scale(1.02); /* Less scale */
+     filter: brightness(1.1); /* Add brightness instead of heavy shadow */
+     /* box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); */ /* Remove shadow? */
+}
+html.dark #booking button:hover,
+html.dark #contact form button:hover,
+html.dark #services .text-center a:hover {
+     filter: brightness(1.2);
+}
+
+/* Footer Enhancements - Keep text shadow */
+footer a:hover {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+html.dark footer a:hover {
+    text-shadow: 0 0 5px rgba(251, 191, 36, 0.5); /* Use accent color shadow in dark */
+}
+footer form button:hover {
+    transform: scale(1.05); /* Keep slight scale */
+}
+
+/* Ensure transitions are smooth for new effects */
+button, .bg-white.rounded-2xl {
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Room Details Modal Styles */
+#room-modal {
+    /* Uses Tailwind classes for base visibility/transition */
+    /* hidden, opacity-0 */
+}
+
+#room-modal.modal-visible {
+    display: flex; /* Override hidden */
+    opacity: 1;
+}
+
+#room-modal.modal-visible #modal-content {
+    transform: scale(1);
+}
+
+/* Scrollbar styling for modal content if needed */
+#modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+#modal-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+#modal-content::-webkit-scrollbar-thumb {
+    background-color: var(--color-border-light);
+    border-radius: 4px;
+}
+html.dark #modal-content::-webkit-scrollbar-thumb {
+     background-color: var(--color-border-light);
+}

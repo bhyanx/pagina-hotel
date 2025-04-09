@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocean View Hotel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'hotel-blue': '#1e40af',
+                        'hotel-white': '#ffffff',
+                        'hotel-accent': '#f59e0b',
+                        'hotel-light': '#f3f4f6',
+                        'hotel-dark': '#1f2937',
+                        'hotel-primary': '#3b82f6',
+                        'hotel-secondary': '#10b981'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body class="font-sans bg-hotel-white text-gray-800">
+    <!-- Page Loader -->
+    <div id="page-loader" class="fixed inset-0 z-[100] flex items-center justify-center bg-white dark:bg-slate-800">
+        <div class="loader-spinner border-4 border-t-4 border-gray-200 dark:border-slate-600 border-t-hotel-primary dark:border-t-blue-400 rounded-full w-12 h-12 animate-spin"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="bg-gradient-to-r from-hotel-blue to-hotel-primary text-white shadow-lg fixed w-full z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="img/logo/logo.png" alt="Ocean View Hotel Logo" class="h-10 sm:h-12 md:h-14 mr-4">
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html#home" class="hover:text-hotel-accent transition duration-300">Inicio</a>
+                <a href="index.html#rooms" class="hover:text-hotel-accent transition duration-300">Habitaciones</a>
+                <a href="services.html" class="hover:text-hotel-accent transition duration-300">Servicios</a>
+                <a href="actividades.html" class="hover:text-hotel-accent transition duration-300">Actividades</a>
+                <a href="index.html#gallery" class="hover:text-hotel-accent transition duration-300">Galería</a>
+                <a href="index.html#contact" class="hover:text-hotel-accent transition duration-300">Contacto</a>
+                <a href="politicas.html" class="hover:text-hotel-accent transition duration-300">Políticas</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <!-- Dark Mode Toggle Button -->
+                <button id="dark-mode-toggle" class="text-white text-xl hover:text-hotel-accent transition duration-300">
+                    <i class="fas fa-moon"></i> <!-- Initial icon -->
+                </button>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-white text-2xl hover:text-hotel-accent transition duration-300">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden bg-gradient-to-b from-hotel-blue to-hotel-primary text-white py-4 px-4 md:hidden">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html#home" class="hover:text-hotel-accent transition duration-300">Inicio</a>
+                <a href="index.html#rooms" class="hover:text-hotel-accent transition duration-300">Habitaciones</a>
+                <a href="services.html" class="hover:text-hotel-accent transition duration-300">Servicios</a>
+                <a href="actividades.html" class="hover:text-hotel-accent transition duration-300">Actividades</a>
+                <a href="index.html#gallery" class="hover:text-hotel-accent transition duration-300">Galería</a>
+                <a href="index.html#contact" class="hover:text-hotel-accent transition duration-300">Contacto</a>
+                <a href="politicas.html" class="hover:text-hotel-accent transition duration-300">Políticas</a>
+                <!-- Dark Mode Toggle in Mobile Menu -->
+                <button id="dark-mode-toggle-mobile" class="mt-4 text-left w-full py-2 px-3 rounded hover:bg-hotel-blue flex items-center">
+                     <i class="fas fa-moon mr-2"></i> Modo Oscuro
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen pt-16 md:pt-0">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/60 z-10"></div>
+        <img src="img/sections/hero.png" alt="Ocean View Hotel" class="absolute inset-0 w-full h-full object-cover">
+        <div class="container mx-auto px-4 h-full flex items-center relative z-20">
+            <div class="text-white max-w-2xl">
+                <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-6 leading-tight">Su escapada perfecta frente al mar</h2>
+                <p class="text-lg sm:text-xl mb-6 md:mb-8 text-gray-100">Disfrute de unas vacaciones inolvidables en nuestro lujoso hotel con impresionantes vistas al océano.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#booking" class="bg-hotel-accent hover:bg-yellow-500 text-white py-3 sm:py-4 px-6 sm:px-8 rounded-full transition duration-300 font-medium shadow-lg hover:shadow-xl text-center">Reservar ahora</a>
+                    <a href="#rooms" class="bg-transparent border-2 border-white hover:bg-white hover:text-hotel-blue text-white py-3 sm:py-4 px-6 sm:px-8 rounded-full transition duration-300 font-medium text-center">Ver habitaciones</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Bar -->
+    <section id="booking" class="bg-white shadow-xl py-6 sm:py-8 -mt-16 relative z-30 rounded-lg mx-4 animate-on-scroll fade-in-up">
+        <div class="container mx-auto px-4">
+            <form id="booking-form" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                <div class="relative">
+                    <label class="block text-hotel-dark text-sm font-medium mb-2">Llegada</label>
+                    <div class="relative">
+                        <i class="fas fa-calendar-alt absolute left-3 top-1/2 transform -translate-y-1/2 text-hotel-primary"></i>
+                        <input type="date" id="check-in" class="w-full p-3 pl-10 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotel-accent focus:border-transparent bg-hotel-light">
+                    </div>
+                </div>
+                <div class="relative">
+                    <label class="block text-hotel-dark text-sm font-medium mb-2">Salida</label>
+                    <div class="relative">
+                        <i class="fas fa-calendar-alt absolute left-3 top-1/2 transform -translate-y-1/2 text-hotel-primary"></i>
+                        <input type="date" id="check-out" class="w-full p-3 pl-10 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotel-accent focus:border-transparent bg-hotel-light">
+                    </div>
+                </div>
+                <div class="relative">
+                    <label class="block text-hotel-dark text-sm font-medium mb-2">Tipo de Habitación</label>
+                    <div class="relative">
+                        <i class="fas fa-bed absolute left-3 top-1/2 transform -translate-y-1/2 text-hotel-primary"></i>
+                        <select id="room-type" class="w-full p-3 pl-10 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotel-accent focus:border-transparent bg-hotel-light appearance-none">
+                            <option value="standard">Habitación Estándar</option>
+                            <option value="deluxe">Suite Deluxe</option>
+                            <option value="presidential">Villa Presidencial</option>
+                        </select>
+                        <i class="fas fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-hotel-primary pointer-events-none"></i>
+                    </div>
+                </div>
+                <div class="relative">
+                    <label class="block text-hotel-dark text-sm font-medium mb-2">Huéspedes</label>
+                    <div class="relative">
+                        <i class="fas fa-user absolute left-3 top-1/2 transform -translate-y-1/2 text-hotel-primary"></i>
+                        <select id="guests" class="w-full p-3 pl-10 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotel-accent focus:border-transparent bg-hotel-light appearance-none">
+                            <option>1 Adulto</option>
+                            <option>2 Adultos</option>
+                            <option>2 Adultos, 1 Niño</option>
+                            <option>2 Adultos, 2 Niños</option>
+                        </select>
+                        <i class="fas fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-hotel-primary pointer-events-none"></i>
+                    </div>
+                </div>
+                <div class="lg:col-span-4">
+                    <div class="bg-hotel-light p-4 rounded-lg mb-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-hotel-dark font-medium">Total:</span>
+                            <span id="total-price" class="text-2xl font-bold text-hotel-accent">$0</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-hotel-accent hover:bg-yellow-500 text-white py-3 px-6 rounded-lg transition duration-300 font-medium shadow-lg hover:shadow-xl">
+                        <i class="fas fa-search mr-2"></i>Reservar ahora
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-12 sm:py-16 bg-gray-50 animate-on-scroll fade-in-up">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <img src="img/sections/about.jpg" alt="Hotel Interior" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-hotel-blue mb-4">Bienvenidos a Ocean View Hotel</h2>
+                    <p class="text-gray-600 mb-6">
+                        Ubicado en la costa más hermosa, nuestro hotel ofrece una experiencia única de lujo y confort. Cada detalle está pensado para hacer de su estancia un momento inolvidable.
+                    </p>
+                    <p class="text-gray-600 mb-8">
+                        Con instalaciones de primera clase y un servicio personalizado, Ocean View Hotel se ha convertido en el destino preferido para viajeros exigentes que buscan lo mejor.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-swimming-pool text-hotel-blue text-2xl mr-3"></i>
+                            <span>Piscina infinita</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-utensils text-hotel-blue text-2xl mr-3"></i>
+                            <span>Restaurante gourmet</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-spa text-hotel-blue text-2xl mr-3"></i>
+                            <span>Spa completo</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-wifi text-hotel-blue text-2xl mr-3"></i>
+                            <span>Wi-Fi de alta velocidad</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="py-12 sm:py-20 bg-hotel-light animate-on-scroll fade-in-up">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-hotel-dark mb-4">Nuestras Habitaciones</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Descubra el confort y la elegancia en cada una de nuestras opciones de alojamiento, diseñadas para brindarle una experiencia única.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Room Card 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg transition duration-300 hover:shadow-2xl hover:-translate-y-2 animate-on-scroll fade-in-up">
+                    <div class="relative">
+                        <img src="img/rooms/Habitacion-Estandar.png" alt="Habitación Estándar" class="w-full h-72 object-cover">
+                        <div class="absolute top-4 right-4 bg-hotel-accent text-white px-4 py-2 rounded-full text-sm font-medium">
+                            $120/noche
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-hotel-dark mb-2">Habitación Estándar</h3>
+                        <div class="flex items-center text-yellow-500 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 mb-6">Comodidad y elegancia en un espacio perfectamente diseñado para su descanso.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-4 text-gray-500">
+                                <span><i class="fas fa-user-friends mr-2"></i>2 personas</span>
+                                <span><i class="fas fa-bed mr-2"></i>1 cama</span>
+                            </div>
+                            <button data-room="standard" class="view-details-button bg-hotel-primary hover:bg-hotel-blue text-white py-2 px-6 rounded-full transition duration-300">Ver detalles</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Room Card 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg transition duration-300 hover:shadow-2xl hover:-translate-y-2 animate-on-scroll fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="relative">
+                        <img src="img/rooms/Suite-Deluxe.png" alt="Suite Deluxe" class="w-full h-72 object-cover">
+                        <div class="absolute top-4 right-4 bg-hotel-accent text-white px-4 py-2 rounded-full text-sm font-medium">
+                            $250/noche
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-hotel-dark mb-2">Suite Deluxe</h3>
+                        <div class="flex items-center text-yellow-500 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 mb-6">Espacio amplio con sala de estar separada y vistas panorámicas al océano.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-4 text-gray-500">
+                                <span><i class="fas fa-user-friends mr-2"></i>4 personas</span>
+                                <span><i class="fas fa-bed mr-2"></i>2 camas</span>
+                            </div>
+                            <button data-room="deluxe" class="view-details-button bg-hotel-primary hover:bg-hotel-blue text-white py-2 px-6 rounded-full transition duration-300">Ver detalles</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Room Card 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg transition duration-300 hover:shadow-2xl hover:-translate-y-2 animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="relative">
+                        <img src="img/rooms/Suite-Presidencial.png" alt="Villa Presidencial" class="w-full h-72 object-cover">
+                        <div class="absolute top-4 right-4 bg-hotel-accent text-white px-4 py-2 rounded-full text-sm font-medium">
+                            $450/noche
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-hotel-dark mb-2">Villa Presidencial</h3>
+                        <div class="flex items-center text-yellow-500 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 mb-6">Nuestra opción más exclusiva con piscina privada y servicio personalizado.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-4 text-gray-500">
+                                <span><i class="fas fa-user-friends mr-2"></i>6 personas</span>
+                                <span><i class="fas fa-bed mr-2"></i>3 camas</span>
+                            </div>
+                            <button data-room="presidential" class="view-details-button bg-hotel-primary hover:bg-hotel-blue text-white py-2 px-6 rounded-full transition duration-300">Ver detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-12 sm:py-20 animate-on-scroll fade-in-up">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-hotel-dark mb-4">Nuestros Servicios</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Disfrute de nuestra amplia gama de servicios diseñados para hacer de su estancia una experiencia inigualable</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 group animate-on-scroll fade-in-up">
+                    <div class="bg-hotel-light w-16 h-16 rounded-full flex items-center justify-center mb-6 group-hover:bg-hotel-accent group-hover:text-white transition duration-300">
+                        <i class="fas fa-utensils text-2xl text-hotel-primary group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-hotel-dark mb-4">Restaurante Gourmet</h3>
+                    <p class="text-gray-600">Disfrute de una experiencia culinaria excepcional con nuestros chefs de renombre mundial.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 group animate-on-scroll fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="bg-hotel-light w-16 h-16 rounded-full flex items-center justify-center mb-6 group-hover:bg-hotel-accent group-hover:text-white transition duration-300">
+                        <i class="fas fa-spa text-2xl text-hotel-primary group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-hotel-dark mb-4">Spa & Bienestar</h3>
+                    <p class="text-gray-600">Relájese y rejuvenezca con nuestros tratamientos exclusivos y terapias holísticas.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 group animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="bg-hotel-light w-16 h-16 rounded-full flex items-center justify-center mb-6 group-hover:bg-hotel-accent group-hover:text-white transition duration-300">
+                        <i class="fas fa-swimming-pool text-2xl text-hotel-primary group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-hotel-dark mb-4">Piscina Infinita</h3>
+                    <p class="text-gray-600">Sumérjase en nuestra impresionante piscina con vistas panorámicas al océano.</p>
+                </div>
+                <!-- Service 4 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 group animate-on-scroll fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="bg-hotel-light w-16 h-16 rounded-full flex items-center justify-center mb-6 group-hover:bg-hotel-accent group-hover:text-white transition duration-300">
+                        <i class="fas fa-concierge-bell text-2xl text-hotel-primary group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-hotel-dark mb-4">Servicio de Conserjería</h3>
+                    <p class="text-gray-600">Nuestro equipo está disponible 24/7 para atender todas sus necesidades durante su estancia.</p>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="services.html" class="bg-hotel-primary hover:bg-hotel-blue text-white py-3 px-8 rounded-full transition duration-300 font-medium shadow-md hover:shadow-lg">
+                    Ver todos los servicios
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-12 sm:py-20 bg-hotel-light animate-on-scroll fade-in-up">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-hotel-dark mb-4">Galería</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Explore nuestras instalaciones y vistas a través de nuestra galería de imágenes</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                <div class="gallery-item relative group overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <img src="img/gallery/hotel-galeria-1.png" alt="Hotel Gallery" class="w-full h-64 object-cover transition duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-lg font-semibold">Vista al Océano</h3>
+                            <p class="text-sm">Desde nuestras suites</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item relative group overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <img src="img/gallery/hotel-galeria-2.png" alt="Hotel Gallery" class="w-full h-64 object-cover transition duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-lg font-semibold">Piscina Infinita</h3>
+                            <p class="text-sm">Relájese y disfrute</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item relative group overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <img src="img/gallery/hotel-galeria-3.png" alt="Hotel Gallery" class="w-full h-64 object-cover transition duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-lg font-semibold">Restaurante</h3>
+                            <p class="text-sm">Experiencia gastronómica</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item relative group overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <img src="img/gallery/hotel-galeria-4.png" alt="Hotel Gallery" class="w-full h-64 object-cover transition duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-lg font-semibold">Spa</h3>
+                            <p class="text-sm">Bienestar y relax</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item relative group overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <img src="img/gallery/hotel-galeria-5.png" alt="Hotel Gallery" class="w-full h-64 object-cover transition duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-lg font-semibold">Habitaciones</h3>
+                            <p class="text-sm">Comodidad y lujo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item relative group overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <img src="img/gallery/hotel-galeria-6.png" alt="Hotel Gallery" class="w-full h-64 object-cover transition duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-lg font-semibold">Atardecer</h3>
+                            <p class="text-sm">Vistas panorámicas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item relative group overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <img src="img/gallery/hotel-galeria-7.png" alt="Hotel Gallery" class="w-full h-64 object-cover transition duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-lg font-semibold">Eventos</h3>
+                            <p class="text-sm">Espacios versátiles</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item relative group overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <img src="img/gallery/hotel-galeria-8.png" alt="Hotel Gallery" class="w-full h-64 object-cover transition duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-lg font-semibold">Playa</h3>
+                            <p class="text-sm">Acceso directo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-12 sm:py-20 animate-on-scroll fade-in-up">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-hotel-dark mb-4">Lo que dicen nuestros huéspedes</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Experiencias reales de quienes han disfrutado de nuestra hospitalidad</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 animate-on-scroll fade-in-up">
+                    <div class="flex items-center mb-6">
+                        <img src="img/testimonials/testimonials-1.png" alt="Cliente 1" class="w-16 h-16 rounded-full mr-4 border-4 border-hotel-accent">
+                        <div>
+                            <h4 class="font-bold text-hotel-dark">Carlos Mendoza</h4>
+                            <div class="flex text-yellow-500">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic relative">
+                        <i class="fas fa-quote-left text-hotel-accent text-2xl absolute -left-2 -top-2 opacity-20"></i>
+                        Una experiencia inolvidable. El servicio fue excepcional y las vistas desde nuestra suite eran impresionantes. Sin duda volveremos.
+                        <i class="fas fa-quote-right text-hotel-accent text-2xl absolute -right-2 -bottom-2 opacity-20"></i>
+                    </p>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 animate-on-scroll fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="flex items-center mb-6">
+                        <img src="img/testimonials/testimonials.png" alt="Cliente 2" class="w-16 h-16 rounded-full mr-4 border-4 border-hotel-accent">
+                        <div>
+                            <h4 class="font-bold text-hotel-dark">Ana García</h4>
+                            <div class="flex text-yellow-500">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic relative">
+                        <i class="fas fa-quote-left text-hotel-accent text-2xl absolute -left-2 -top-2 opacity-20"></i>
+                        El spa es simplemente maravilloso. Los tratamientos son de primera calidad y el personal es muy atento. Totalmente recomendado.
+                        <i class="fas fa-quote-right text-hotel-accent text-2xl absolute -right-2 -bottom-2 opacity-20"></i>
+                    </p>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="flex items-center mb-6">
+                        <img src="img/testimonials/testimonials-2.png" alt="Cliente 3" class="w-16 h-16 rounded-full mr-4 border-4 border-hotel-accent">
+                        <div>
+                            <h4 class="font-bold text-hotel-dark">Miguel Rodríguez</h4>
+                            <div class="flex text-yellow-500">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic relative">
+                        <i class="fas fa-quote-left text-hotel-accent text-2xl absolute -left-2 -top-2 opacity-20"></i>
+                        La comida en el restaurante es espectacular. El chef realmente sabe cómo preparar platos que sorprenden los sentidos.
+                        <i class="fas fa-quote-right text-hotel-accent text-2xl absolute -right-2 -bottom-2 opacity-20"></i>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-12 sm:py-20 bg-hotel-light animate-on-scroll fade-in-up">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row gap-8 sm:gap-12">
+                <div class="md:w-1/2 animate-on-scroll fade-in-up">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-hotel-dark mb-6">Contacte con nosotros</h2>
+                    <p class="text-gray-600 mb-8">¿Tiene alguna pregunta o desea hacer una reservación? No dude en ponerse en contacto con nosotros.</p>
+                    <div class="space-y-6">
+                        <div class="flex items-start group">
+                            <div class="bg-hotel-accent w-12 h-12 rounded-full flex items-center justify-center mr-4 group-hover:bg-hotel-primary transition duration-300">
+                                <i class="fas fa-map-marker-alt text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-hotel-dark mb-1">Dirección</h3>
+                                <p class="text-gray-600">Av. del Mar 1234, Playa Hermosa, Lima, Perú</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start group">
+                            <div class="bg-hotel-accent w-12 h-12 rounded-full flex items-center justify-center mr-4 group-hover:bg-hotel-primary transition duration-300">
+                                <i class="fas fa-phone text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-hotel-dark mb-1">Teléfono</h3>
+                                <p class="text-gray-600">+52 123 456 7890</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start group">
+                            <div class="bg-hotel-accent w-12 h-12 rounded-full flex items-center justify-center mr-4 group-hover:bg-hotel-primary transition duration-300">
+                                <i class="fas fa-envelope text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-hotel-dark mb-1">Email</h3>
+                                <p class="text-gray-600">info@oceanviewhotel.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-12">
+                        <h3 class="text-xl font-bold text-hotel-dark mb-6">Síguenos</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-hotel-accent text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-hotel-primary transition duration-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="bg-hotel-accent text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-hotel-primary transition duration-300">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="bg-hotel-accent text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-hotel-primary transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="bg-hotel-accent text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-hotel-primary transition duration-300">
+                                <i class="fab fa-pinterest"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <form class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
+                        <div class="mb-6">
+                            <label for="name" class="block text-hotel-dark font-medium mb-2">Nombre</label>
+                            <input type="text" id="name" class="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotel-accent focus:border-transparent bg-hotel-light">
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block text-hotel-dark font-medium mb-2">Email</label>
+                            <input type="email" id="email" class="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotel-accent focus:border-transparent bg-hotel-light">
+                        </div>
+                        <div class="mb-6">
+                            <label for="subject" class="block text-hotel-dark font-medium mb-2">Asunto</label>
+                            <input type="text" id="subject" class="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotel-accent focus:border-transparent bg-hotel-light">
+                        </div>
+                        <div class="mb-8">
+                            <label for="message" class="block text-hotel-dark font-medium mb-2">Mensaje</label>
+                            <textarea id="message" rows="5" class="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotel-accent focus:border-transparent bg-hotel-light"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-hotel-accent hover:bg-hotel-primary text-white py-4 px-6 rounded-lg transition duration-300 font-medium shadow-lg hover:shadow-xl">
+                            <i class="fas fa-paper-plane mr-2"></i>Enviar mensaje
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-hotel-blue to-hotel-primary text-white py-12 sm:py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
+                <div>
+                    <img src="img/logo-white.png" alt="Ocean View Hotel Logo" class="h-14 mb-6">
+                    <p class="text-blue-100">Experiencias inolvidables en un entorno de lujo y confort frente al mar.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Enlaces rápidos</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html#home" class="text-blue-100 hover:text-hotel-accent transition duration-300">Inicio</a></li>
+                        <li><a href="index.html#rooms" class="text-blue-100 hover:text-hotel-accent transition duration-300">Habitaciones</a></li>
+                        <li><a href="services.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Servicios</a></li>
+                        <li><a href="actividades.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Actividades</a></li>
+                        <li><a href="index.html#gallery" class="text-blue-100 hover:text-hotel-accent transition duration-300">Galería</a></li>
+                        <li><a href="index.html#contact" class="text-blue-100 hover:text-hotel-accent transition duration-300">Contacto</a></li>
+                        <li><a href="politicas.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Políticas</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Servicios</h3>
+                    <ul class="space-y-3">
+                        <li><a href="services.html#restaurant" class="text-blue-100 hover:text-hotel-accent transition duration-300">Restaurante</a></li>
+                        <li><a href="services.html#spa" class="text-blue-100 hover:text-hotel-accent transition duration-300">Spa & Bienestar</a></li>
+                        <li><a href="services.html#pool" class="text-blue-100 hover:text-hotel-accent transition duration-300">Piscina Infinita</a></li>
+                        <li><a href="services.html#concierge" class="text-blue-100 hover:text-hotel-accent transition duration-300">Conserjería</a></li>
+                        <li><a href="#contact" class="text-blue-100 hover:text-hotel-accent transition duration-300">Eventos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Boletín</h3>
+                    <p class="text-blue-100 mb-6">Suscríbase para recibir ofertas exclusivas y novedades.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Su email" class="p-4 rounded-l-lg w-full focus:outline-none text-gray-800">
+                        <button type="submit" class="bg-hotel-accent hover:bg-hotel-primary px-6 rounded-r-lg transition duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-blue-800/30 mt-8 sm:mt-12 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center">
+                <p class="text-blue-100 text-center sm:text-left">&copy; 2025 Ocean View Hotel. Todos los derechos reservados.</p>
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="#" class="text-blue-100 hover:text-hotel-accent transition duration-300">Términos</a>
+                    <a href="#" class="text-blue-100 hover:text-hotel-accent transition duration-300">Privacidad</a>
+                    <a href="politicas.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Políticas</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <button id="chat-button" class="chat-button">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div id="chat-container">
+            <div class="chat-header">
+                <h3>Asistente Virtual</h3>
+                <button id="close-chat">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="chat-messages"></div>
+            <div class="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Escribe tu mensaje...">
+                <button id="send-button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            <div class="whatsapp-section">
+                <button class="whatsapp-button" onclick="openWhatsApp()">
+                    <i class="fab fa-whatsapp"></i>
+                    Chatear por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <a href="#home" id="back-to-top-btn" class="fixed bottom-5 left-5 z-50 p-3 bg-hotel-accent text-white rounded-full shadow-lg hover:bg-hotel-primary transition duration-300 opacity-0 visibility-hidden translate-y-4">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Room Details Modal -->
+    <div id="room-modal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black bg-opacity-70 p-4 transition-opacity duration-300 opacity-0">
+        <div id="modal-content" class="bg-white dark:bg-slate-800 rounded-2xl shadow-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto p-6 md:p-8 relative scale-95 transition-transform duration-300 transform">
+            <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-500 dark:text-gray-400 hover:text-hotel-dark dark:hover:text-white text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 id="modal-room-title" class="text-3xl font-bold text-hotel-dark dark:text-white mb-4"></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <img id="modal-room-image" src="" alt="" class="w-full h-64 object-cover rounded-lg mb-4">
+                    <div id="modal-room-gallery" class="grid grid-cols-3 gap-2">
+                        <!-- Additional images could go here -->
+                    </div>
+                </div>
+                <div>
+                    <p id="modal-room-description" class="text-gray-600 dark:text-slate-300 mb-4"></p>
+                    <h4 class="font-semibold text-hotel-dark dark:text-white mb-2">Detalles:</h4>
+                    <ul class="list-disc list-inside text-gray-600 dark:text-slate-300 space-y-1 mb-4">
+                        <li id="modal-room-capacity"></li>
+                        <li id="modal-room-beds"></li>
+                        <li id="modal-room-size"></li>
+                        <!-- Add more static details if applicable -->
+                    </ul>
+                    <h4 class="font-semibold text-hotel-dark dark:text-white mb-2">Amenidades:</h4>
+                    <ul id="modal-room-amenities" class="list-disc list-inside text-gray-600 dark:text-slate-300 space-y-1 mb-4">
+                        <!-- Amenities will be populated by JS -->
+                    </ul>
+                    <div class="mt-6 flex items-center justify-between">
+                        <span id="modal-room-price" class="text-2xl font-bold text-hotel-accent"></span>
+                        <a href="#booking" id="modal-book-now-btn" class="bg-hotel-accent hover:bg-yellow-500 text-white py-2 px-6 rounded-full transition duration-300">Reservar esta habitación</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        const mobileLinks = mobileMenu.getElementsByTagName('a');
+        for (let link of mobileLinks) {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        }
+    </script>
+    <script src="js/mercadopago.js"></script>
+    <script src="js/booking.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

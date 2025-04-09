@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Políticas y FAQ - Ocean View Hotel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'hotel-blue': '#1e40af',
+                        'hotel-white': '#ffffff',
+                        'hotel-accent': '#f59e0b',
+                        'hotel-light': '#f3f4f6',
+                        'hotel-dark': '#1f2937',
+                        'hotel-primary': '#3b82f6',
+                        'hotel-secondary': '#10b981'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body class="font-sans bg-hotel-white text-gray-800">
+    <!-- Page Loader -->
+    <div id="page-loader" class="fixed inset-0 z-[100] flex items-center justify-center bg-white dark:bg-slate-800">
+        <div class="loader-spinner border-4 border-t-4 border-gray-200 dark:border-slate-600 border-t-hotel-primary dark:border-t-blue-400 rounded-full w-12 h-12 animate-spin"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="bg-gradient-to-r from-hotel-blue to-hotel-primary text-white shadow-lg fixed w-full z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                 <a href="index.html#home"><img src="img/logo/logo.png" alt="Ocean View Hotel Logo" class="h-10 sm:h-12 md:h-14 mr-4"></a>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html#home" class="hover:text-hotel-accent transition duration-300">Inicio</a>
+                <a href="index.html#rooms" class="hover:text-hotel-accent transition duration-300">Habitaciones</a>
+                <a href="services.html" class="hover:text-hotel-accent transition duration-300">Servicios</a>
+                <a href="actividades.html" class="hover:text-hotel-accent transition duration-300">Actividades</a>
+                <a href="index.html#gallery" class="hover:text-hotel-accent transition duration-300">Galería</a>
+                <a href="index.html#contact" class="hover:text-hotel-accent transition duration-300">Contacto</a>
+                <a href="#" class="text-hotel-accent font-semibold">Políticas</a> <!-- Active Link -->
+            </nav>
+            <div class="flex items-center space-x-4">
+                 <!-- Dark Mode Toggle Button -->
+                <button id="dark-mode-toggle" class="text-white text-xl hover:text-hotel-accent transition duration-300">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-white text-2xl hover:text-hotel-accent transition duration-300">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden bg-gradient-to-b from-hotel-blue to-hotel-primary text-white py-4 px-4 md:hidden">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html#home" class="hover:text-hotel-accent transition duration-300">Inicio</a>
+                <a href="index.html#rooms" class="hover:text-hotel-accent transition duration-300">Habitaciones</a>
+                <a href="services.html" class="hover:text-hotel-accent transition duration-300">Servicios</a>
+                <a href="actividades.html" class="hover:text-hotel-accent transition duration-300">Actividades</a>
+                <a href="index.html#gallery" class="hover:text-hotel-accent transition duration-300">Galería</a>
+                <a href="index.html#contact" class="hover:text-hotel-accent transition duration-300">Contacto</a>
+                 <a href="#" class="text-hotel-accent font-semibold">Políticas</a> <!-- Active Link -->
+                 <!-- Dark Mode Toggle in Mobile Menu -->
+                <button id="dark-mode-toggle-mobile" class="mt-4 text-left w-full py-2 px-3 rounded hover:bg-hotel-blue flex items-center">
+                     <i class="fas fa-moon mr-2"></i> Modo Oscuro
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="pt-24 sm:pt-28 pb-16">
+        <section class="py-12 sm:py-16 bg-hotel-light dark:bg-slate-800">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12 sm:mb-16 animate-on-scroll fade-in-up">
+                    <h1 class="text-4xl sm:text-5xl font-bold text-hotel-dark dark:text-white mb-4">Políticas del Hotel y Preguntas Frecuentes</h1>
+                    <p class="text-gray-600 dark:text-slate-400 max-w-3xl mx-auto text-lg">Información importante para su estancia en Ocean View Hotel.</p>
+                </div>
+
+                <div class="max-w-4xl mx-auto bg-white dark:bg-slate-700 p-8 rounded-2xl shadow-lg animate-on-scroll fade-in-up">
+                    
+                    <!-- Políticas Section -->
+                    <div id="politicas" class="mb-12 scroll-mt-28">
+                        <h2 class="text-3xl font-bold text-hotel-dark dark:text-white mb-6 border-b-2 border-hotel-accent pb-2">Políticas del Hotel</h2>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-hotel-primary dark:text-blue-400 mb-2">Horarios de Check-in y Check-out</h3>
+                            <ul class="list-disc list-inside text-gray-600 dark:text-slate-300 space-y-1">
+                                <li><strong>Check-in:</strong> A partir de las 3:00 PM</li>
+                                <li><strong>Check-out:</strong> Hasta las 12:00 PM (mediodía)</li>
+                                <li>Para salidas tardías (late check-out) o llegadas tempranas, por favor consulte disponibilidad y posibles cargos adicionales con recepción.</li>
+                            </ul>
+                        </div>
+
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-hotel-primary dark:text-blue-400 mb-2">Política de Cancelación</h3>
+                            <p class="text-gray-600 dark:text-slate-300 mb-2">Las políticas de cancelación varían según la tarifa seleccionada al momento de reservar. Por favor, revise las condiciones específicas de su reserva.</p>
+                            <ul class="list-disc list-inside text-gray-600 dark:text-slate-300 space-y-1">
+                                <li><strong>Tarifas Flexibles:</strong> Cancelación gratuita hasta 72 horas antes de la fecha de llegada. Cancelaciones posteriores o no presentación (no-show) incurrirán en un cargo equivalente a la primera noche de estancia.</li>
+                                <li><strong>Tarifas No Reembolsables:</strong> No permiten cancelaciones ni modificaciones. El importe total de la reserva se cargará al momento de confirmar y no será reembolsado en ningún caso.</li>
+                                <li>En caso de salida anticipada, no se realizarán reembolsos por las noches no utilizadas (aplicable a ambas tarifas).</li>
+                            </ul>
+                        </div>
+
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-hotel-primary dark:text-blue-400 mb-2">Política de Pagos</h3>
+                            <ul class="list-disc list-inside text-gray-600 dark:text-slate-300 space-y-1">
+                                <li>Aceptamos las principales tarjetas de crédito (Visa, MasterCard, American Express), transferencias bancarias (previa coordinación) y pago en efectivo (moneda local - Soles Peruanos PEN).</li>
+                                <li>Se requiere una tarjeta de crédito válida al momento del check-in como garantía por posibles consumos adicionales.</li>
+                                <li>Para reservas con tarifas no reembolsables, el pago completo se realiza al momento de la reserva.</li>
+                                <li>Todos los precios incluyen los impuestos aplicables.</li>
+                            </ul>
+                        </div>
+
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-hotel-primary dark:text-blue-400 mb-2">Política sobre Mascotas</h3>
+                            <p class="text-gray-600 dark:text-slate-300">Lamentamos informar que, por el momento, no se admiten mascotas en las instalaciones del hotel, a excepción de perros guía debidamente acreditados.</p>
+                        </div>
+
+                         <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-hotel-primary dark:text-blue-400 mb-2">Política sobre Niños</h3>
+                            <ul class="list-disc list-inside text-gray-600 dark:text-slate-300 space-y-1">
+                                <li>Niños menores de 5 años se hospedan gratis compartiendo cama con sus padres (máximo 1 por habitación).</li>
+                                <li>Niños de 5 a 11 años pueden aplicar cargos adicionales según la tarifa y tipo de habitación.</li>
+                                <li>Niños de 12 años en adelante son considerados adultos para efectos de tarifa y ocupación.</li>
+                                <li>Disponemos de cunas bajo petición y sujetas a disponibilidad (puede aplicar cargo).</li>
+                            </ul>
+                        </div>
+                        
+                         <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-hotel-primary dark:text-blue-400 mb-2">Otras Políticas</h3>
+                            <ul class="list-disc list-inside text-gray-600 dark:text-slate-300 space-y-1">
+                                <li>Hotel 100% libre de humo en habitaciones y áreas cerradas. Se aplicarán cargos por limpieza profunda si se detecta humo.</li>
+                                <li>El hotel se reserva el derecho de admisión.</li>
+                                <li>Cualquier daño causado a la propiedad del hotel será cargado a la cuenta del huésped responsable.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <!-- FAQ Section -->
+                    <div id="faq" class="scroll-mt-28">
+                        <h2 class="text-3xl font-bold text-hotel-dark dark:text-white mb-6 border-b-2 border-hotel-accent pb-2">Preguntas Frecuentes (FAQ)</h2>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-lg font-semibold text-hotel-dark dark:text-white mb-1">¿El hotel tiene estacionamiento?</h4>
+                                <p class="text-gray-600 dark:text-slate-300">Sí, ofrecemos estacionamiento gratuito para nuestros huéspedes (sujeto a disponibilidad).</p>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-hotel-dark dark:text-white mb-1">¿El desayuno está incluido?</h4>
+                                <p class="text-gray-600 dark:text-slate-300">Depende de la tarifa seleccionada. Ofrecemos tarifas con y sin desayuno incluido. Por favor, verifique las condiciones al momento de reservar.</p>
+                            </div>
+                             <div>
+                                <h4 class="text-lg font-semibold text-hotel-dark dark:text-white mb-1">¿Hay Wi-Fi gratuito?</h4>
+                                <p class="text-gray-600 dark:text-slate-300">Sí, ofrecemos acceso a Wi-Fi de alta velocidad gratuito en todas las habitaciones y áreas comunes del hotel.</p>
+                            </div>
+                             <div>
+                                <h4 class="text-lg font-semibold text-hotel-dark dark:text-white mb-1">¿Cómo puedo llegar al hotel desde el aeropuerto?</h4>
+                                <p class="text-gray-600 dark:text-slate-300">El aeropuerto más cercano es el de Pisco (PIO) o Lima (LIM). Podemos coordinar un servicio de traslado por un costo adicional. También hay opciones de buses interprovinciales hasta Ica, y desde allí un taxi al hotel. Contáctenos para más detalles.</p>
+                            </div>
+                             <div>
+                                <h4 class="text-lg font-semibold text-hotel-dark dark:text-white mb-1">¿Ofrecen tours o actividades?</h4>
+                                <p class="text-gray-600 dark:text-slate-300">Sí, nuestro equipo de conserjería puede ayudarle a organizar diversos tours y actividades en la zona, como paseos en buggy por las dunas, sandboarding, visitas a bodegas de Pisco, sobrevuelos a las Líneas de Nazca (desde Pisco/Ica), y más. Consulte nuestra futura página de "Actividades" o pregunte en recepción.</p>
+                            </div>
+                             <div>
+                                <h4 class="text-lg font-semibold text-hotel-dark dark:text-white mb-1">¿La piscina está climatizada?</h4>
+                                <p class="text-gray-600 dark:text-slate-300">Nuestra piscina infinita exterior no está climatizada, pero goza de excelente temperatura gracias al clima soleado de la región durante gran parte del año.</p>
+                            </div>
+                            <!-- Añadir más preguntas frecuentes según sea necesario -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-hotel-blue to-hotel-primary text-white py-12 sm:py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
+                <div>
+                    <a href="index.html#home"><img src="img/logo-white.png" alt="Ocean View Hotel Logo" class="h-14 mb-6"></a>
+                    <p class="text-blue-100">Experiencias inolvidables en un entorno de lujo y confort frente al mar.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Enlaces rápidos</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html#home" class="text-blue-100 hover:text-hotel-accent transition duration-300">Inicio</a></li>
+                        <li><a href="index.html#rooms" class="text-blue-100 hover:text-hotel-accent transition duration-300">Habitaciones</a></li>
+                        <li><a href="services.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Servicios</a></li>
+                        <li><a href="actividades.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Actividades</a></li>
+                        <li><a href="index.html#gallery" class="text-blue-100 hover:text-hotel-accent transition duration-300">Galería</a></li>
+                        <li><a href="index.html#contact" class="text-blue-100 hover:text-hotel-accent transition duration-300">Contacto</a></li>
+                        <li><a href="politicas.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Políticas y FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Servicios Destacados</h3>
+                     <ul class="space-y-3">
+                        <li><a href="services.html#restaurant" class="text-blue-100 hover:text-hotel-accent transition duration-300">Restaurante</a></li>
+                        <li><a href="services.html#spa" class="text-blue-100 hover:text-hotel-accent transition duration-300">Spa & Bienestar</a></li>
+                        <li><a href="services.html#pool" class="text-blue-100 hover:text-hotel-accent transition duration-300">Piscina Infinita</a></li>
+                        <li><a href="services.html#concierge" class="text-blue-100 hover:text-hotel-accent transition duration-300">Conserjería</a></li>
+                         <li><a href="index.html#contact" class="text-blue-100 hover:text-hotel-accent transition duration-300">Eventos y Reuniones</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Boletín</h3>
+                    <p class="text-blue-100 mb-6">Suscríbase para recibir ofertas exclusivas y novedades.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Su email" class="p-4 rounded-l-lg w-full focus:outline-none text-gray-800 dark:bg-slate-600 dark:text-white dark:placeholder-slate-400">
+                        <button type="submit" class="bg-hotel-accent hover:bg-hotel-primary px-6 rounded-r-lg transition duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-blue-800/30 mt-8 sm:mt-12 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center">
+                <p class="text-blue-100 text-center sm:text-left">&copy; 2025 Ocean View Hotel. Todos los derechos reservados.</p>
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="#" class="text-blue-100 hover:text-hotel-accent transition duration-300">Términos</a>
+                    <a href="#" class="text-blue-100 hover:text-hotel-accent transition duration-300">Privacidad</a>
+                    <a href="politicas.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Políticas</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <button id="chat-button" class="chat-button">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div id="chat-container">
+            <div class="chat-header">
+                <h3>Asistente Virtual</h3>
+                <button id="close-chat">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="chat-messages"></div>
+            <div class="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Escribe tu mensaje...">
+                <button id="send-button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+             <div class="whatsapp-section">
+                <button class="whatsapp-button" onclick="openWhatsApp()">
+                    <i class="fab fa-whatsapp"></i>
+                    Chatear por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <a href="#" id="back-to-top-btn" class="fixed bottom-5 left-5 z-50 p-3 bg-hotel-accent text-white rounded-full shadow-lg hover:bg-hotel-primary transition duration-300 opacity-0 visibility-hidden translate-y-4">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="js/chat.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 

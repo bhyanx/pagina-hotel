@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividades y Experiencias - Ocean View Hotel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'hotel-blue': '#1e40af',
+                        'hotel-white': '#ffffff',
+                        'hotel-accent': '#f59e0b',
+                        'hotel-light': '#f3f4f6',
+                        'hotel-dark': '#1f2937',
+                        'hotel-primary': '#3b82f6',
+                        'hotel-secondary': '#10b981'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body class="font-sans bg-hotel-white text-gray-800">
+    <!-- Page Loader -->
+    <div id="page-loader" class="fixed inset-0 z-[100] flex items-center justify-center bg-white dark:bg-slate-800">
+        <div class="loader-spinner border-4 border-t-4 border-gray-200 dark:border-slate-600 border-t-hotel-primary dark:border-t-blue-400 rounded-full w-12 h-12 animate-spin"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="bg-gradient-to-r from-hotel-blue to-hotel-primary text-white shadow-lg fixed w-full z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                 <a href="index.html#home"><img src="img/logo/logo.png" alt="Ocean View Hotel Logo" class="h-10 sm:h-12 md:h-14 mr-4"></a>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html#home" class="hover:text-hotel-accent transition duration-300">Inicio</a>
+                <a href="index.html#rooms" class="hover:text-hotel-accent transition duration-300">Habitaciones</a>
+                <a href="services.html" class="hover:text-hotel-accent transition duration-300">Servicios</a>
+                <a href="#" class="text-hotel-accent font-semibold">Actividades</a> <!-- Active Link -->
+                <a href="index.html#gallery" class="hover:text-hotel-accent transition duration-300">Galería</a>
+                <a href="index.html#contact" class="hover:text-hotel-accent transition duration-300">Contacto</a>
+                <a href="politicas.html" class="hover:text-hotel-accent transition duration-300">Políticas</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                 <!-- Dark Mode Toggle Button -->
+                <button id="dark-mode-toggle" class="text-white text-xl hover:text-hotel-accent transition duration-300">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-white text-2xl hover:text-hotel-accent transition duration-300">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden bg-gradient-to-b from-hotel-blue to-hotel-primary text-white py-4 px-4 md:hidden">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html#home" class="hover:text-hotel-accent transition duration-300">Inicio</a>
+                <a href="index.html#rooms" class="hover:text-hotel-accent transition duration-300">Habitaciones</a>
+                <a href="services.html" class="hover:text-hotel-accent transition duration-300">Servicios</a>
+                <a href="#" class="text-hotel-accent font-semibold">Actividades</a> <!-- Active Link -->
+                <a href="index.html#gallery" class="hover:text-hotel-accent transition duration-300">Galería</a>
+                <a href="index.html#contact" class="hover:text-hotel-accent transition duration-300">Contacto</a>
+                <a href="politicas.html" class="hover:text-hotel-accent transition duration-300">Políticas</a>
+                <!-- Dark Mode Toggle in Mobile Menu -->
+                <button id="dark-mode-toggle-mobile" class="mt-4 text-left w-full py-2 px-3 rounded hover:bg-hotel-blue flex items-center">
+                     <i class="fas fa-moon mr-2"></i> Modo Oscuro
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="pt-24 sm:pt-28 pb-16">
+        <section class="py-12 sm:py-20 bg-hotel-light dark:bg-slate-800">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12 sm:mb-16 animate-on-scroll fade-in-up">
+                    <h1 class="text-4xl sm:text-5xl font-bold text-hotel-dark dark:text-white mb-4">Actividades y Experiencias</h1>
+                    <p class="text-gray-600 dark:text-slate-400 max-w-3xl mx-auto text-lg">Descubra la aventura y la cultura que rodean a Ocean View Hotel. Ica y sus alrededores ofrecen experiencias inolvidables.</p>
+                </div>
+
+                <!-- Actividad: Buggy y Sandboarding -->
+                <div id="buggy" class="mb-16 grid md:grid-cols-2 gap-8 md:gap-12 items-center bg-white dark:bg-slate-700 rounded-2xl shadow-lg overflow-hidden p-8 md:p-0 animate-on-scroll fade-in-up scroll-mt-28">
+                    <div class="md:order-1">
+                        <img src="img/gallery/hotel-galeria-6.png" alt="Buggy en las dunas" class="w-full h-full object-cover rounded-lg md:rounded-l-lg md:rounded-r-none"> <!-- Usar imagen de buggy -->
+                    </div>
+                    <div class="md:order-2 md:p-12">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-hotel-accent w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-car-side text-white text-xl"></i> <!-- Icono puede variar -->
+                            </div>
+                            <h2 class="text-3xl font-bold text-hotel-dark dark:text-white">Aventura en Buggy y Sandboard</h2>
+                        </div>
+                        <p class="text-gray-600 dark:text-slate-300 mb-4">Sienta la adrenalina recorriendo las impresionantes dunas del desierto de Ica a bordo de potentes buggies areneros. Nuestros conductores expertos le llevarán por emocionantes subidas y bajadas.</p>
+                        <p class="text-gray-600 dark:text-slate-300 mb-4">Además, tendrá la oportunidad de practicar sandboarding, deslizándose por las dunas sobre una tabla. ¡Una experiencia imperdible para los amantes de la aventura, culminando con vistas espectaculares del atardecer!</p>
+                        <ul class="list-disc list-inside text-gray-600 dark:text-slate-300 space-y-1">
+                            <li>Duración: Aproximadamente 2 horas (incluye parada para sandboard y fotos).</li>
+                            <li>Nivel de dificultad: Moderado (Buggy) / Variable (Sandboard).</li>
+                            <li>Recomendaciones: Llevar gafas de sol, protector solar, ropa cómoda.</li>
+                            <li>Consulte en recepción por horarios y reservas.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Actividad: Tour Bodegas de Pisco -->
+                <div id="pisco" class="mb-16 grid md:grid-cols-2 gap-8 md:gap-12 items-center bg-hotel-light dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden p-8 md:p-0 scroll-mt-28 animate-on-scroll fade-in-up">
+                    <div class="md:order-2">
+                         <img src="img/gallery/hotel-galeria-3.png" alt="Viñedo y bodega de Pisco" class="w-full h-full object-cover rounded-lg md:rounded-r-lg md:rounded-l-none"> <!-- Usar imagen de viñedo/bodega -->
+                    </div>
+                   <div class="md:order-1 md:p-12">
+                         <div class="flex items-center mb-4">
+                            <div class="bg-hotel-accent w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-wine-glass-alt text-white text-xl"></i>
+                            </div>
+                            <h2 class="text-3xl font-bold text-hotel-dark dark:text-white">Ruta del Pisco y Vino</h2>
+                        </div>
+                        <p class="text-gray-600 dark:text-slate-300 mb-4">Descubra los secretos de la bebida nacional del Perú en un fascinante recorrido por las bodegas artesanales e industriales de Pisco y vino de la región de Ica. Conozca el proceso de elaboración desde la cosecha de la uva hasta la destilación.</p>
+                        <p class="text-gray-600 dark:text-slate-300 mb-4">Disfrute de degustaciones guiadas de diferentes variedades de Pisco y vinos locales, aprendiendo a apreciar sus aromas y sabores únicos. Una experiencia cultural y sensorial.</p>
+                        <ul class="list-disc list-inside text-gray-600 dark:text-slate-300 space-y-1">
+                             <li>Duración: Medio día (aprox. 4 horas) o día completo.</li>
+                             <li>Incluye: Transporte, guía, visita a bodegas y degustaciones.</li>
+                             <li>Posibilidad de comprar productos directamente en las bodegas.</li>
+                             <li>Reserve su tour con nuestro equipo de conserjería.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Actividad: Paracas e Islas Ballestas -->
+                 <div id="paracas" class="mb-16 text-center bg-white dark:bg-slate-700 rounded-2xl shadow-lg overflow-hidden p-8 md:p-16 scroll-mt-28 animate-on-scroll fade-in-up">
+                     <div class="flex justify-center mb-6">
+                        <div class="bg-hotel-accent w-20 h-20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-ship text-white text-4xl"></i> <!-- O un icono de animal marino -->
+                        </div>
+                    </div>
+                    <h2 class="text-3xl font-bold text-hotel-dark dark:text-white mb-4">Reserva Nacional de Paracas e Islas Ballestas</h2>
+                    <p class="text-gray-600 dark:text-slate-300 max-w-2xl mx-auto mb-4">Explore la increíble biodiversidad marina y paisajística de la costa peruana. Un viaje en bote a las Islas Ballestas le permitirá observar de cerca lobos marinos, pingüinos de Humboldt, y una gran variedad de aves guaneras en su hábitat natural.</p>
+                    <p class="text-gray-600 dark:text-slate-300 max-w-2xl mx-auto mb-6">Combine esta experiencia con una visita a la Reserva Nacional de Paracas, admirando formaciones rocosas como La Catedral y disfrutando de playas únicas como Playa Roja. (Tour de día completo desde Ica).</p>
+                     <ul class="inline-block text-left list-disc list-inside text-gray-600 dark:text-slate-300 space-y-1">
+                        <li>Duración: Día completo (aprox. 8-10 horas incluyendo traslados).</li>
+                        <li>Incluye: Transporte terrestre y marítimo, guía, entradas.</li>
+                        <li>Recomendaciones: Llevar gorro, protector solar, cortavientos.</li>
+                    </ul>
+                     <img src="img/gallery/hotel-galeria-8.png" alt="Islas Ballestas" class="w-full h-64 object-cover rounded-lg mt-8"> <!-- Usar imagen de Ballestas/Paracas -->
+                </div>
+
+                <!-- Otras Actividades Sugeridas (Layout Tarjetas) -->
+                 <div class="scroll-mt-28 animate-on-scroll fade-in-up">
+                     <h2 class="text-3xl font-bold text-hotel-dark dark:text-white text-center mb-12">Otras Experiencias</h2>
+                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                         <!-- Nazca Lines Card -->
+                         <div id="nazca" class="bg-white dark:bg-slate-700 p-6 rounded-2xl shadow-lg text-center group">
+                             <div class="inline-block bg-hotel-light dark:bg-slate-800 p-4 rounded-full mb-4 group-hover:bg-hotel-accent transition duration-300">
+                                 <i class="fas fa-plane text-3xl text-hotel-primary dark:text-blue-400 group-hover:text-white"></i>
+                             </div>
+                             <h3 class="text-xl font-bold text-hotel-dark dark:text-white mb-2">Sobrevuelo Líneas de Nazca</h3>
+                             <p class="text-gray-600 dark:text-slate-300 text-sm">Maravíllese con los enigmáticos geoglifos desde el aire (salidas desde Pisco o Ica).</p>
+                         </div>
+                         <!-- Relax en el Hotel Card -->
+                          <div class="bg-white dark:bg-slate-700 p-6 rounded-2xl shadow-lg text-center group">
+                             <div class="inline-block bg-hotel-light dark:bg-slate-800 p-4 rounded-full mb-4 group-hover:bg-hotel-accent transition duration-300">
+                                 <i class="fas fa-umbrella-beach text-3xl text-hotel-primary dark:text-blue-400 group-hover:text-white"></i>
+                             </div>
+                             <h3 class="text-xl font-bold text-hotel-dark dark:text-white mb-2">Relax en el Hotel</h3>
+                             <p class="text-gray-600 dark:text-slate-300 text-sm">Disfrute de nuestra piscina, bar, restaurante y la tranquilidad de nuestras instalaciones.</p>
+                         </div>
+                         <!-- Gastronomía Local Card -->
+                         <div class="bg-white dark:bg-slate-700 p-6 rounded-2xl shadow-lg text-center group">
+                            <div class="inline-block bg-hotel-light dark:bg-slate-800 p-4 rounded-full mb-4 group-hover:bg-hotel-accent transition duration-300">
+                                 <i class="fas fa-utensils text-3xl text-hotel-primary dark:text-blue-400 group-hover:text-white"></i>
+                             </div>
+                             <h3 class="text-xl font-bold text-hotel-dark dark:text-white mb-2">Gastronomía Iqueña</h3>
+                             <p class="text-gray-600 dark:text-slate-300 text-sm">Pruebe platos típicos de la región como la carapulcra, sopa seca o dulces tradicionales.</p>
+                         </div>
+                     </div>
+                     <p class="text-center text-gray-600 dark:text-slate-400 mt-8">Nuestro equipo de conserjería estará encantado de ayudarle a planificar y reservar estas y otras actividades.</p>
+                 </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+     <footer class="bg-gradient-to-r from-hotel-blue to-hotel-primary text-white py-12 sm:py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
+                <div>
+                    <a href="index.html#home"><img src="img/logo-white.png" alt="Ocean View Hotel Logo" class="h-14 mb-6"></a>
+                    <p class="text-blue-100">Experiencias inolvidables en un entorno de lujo y confort frente al mar.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Enlaces rápidos</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html#home" class="text-blue-100 hover:text-hotel-accent transition duration-300">Inicio</a></li>
+                        <li><a href="index.html#rooms" class="text-blue-100 hover:text-hotel-accent transition duration-300">Habitaciones</a></li>
+                        <li><a href="services.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Servicios</a></li>
+                        <li><a href="actividades.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Actividades</a></li>
+                        <li><a href="index.html#gallery" class="text-blue-100 hover:text-hotel-accent transition duration-300">Galería</a></li>
+                        <li><a href="index.html#contact" class="text-blue-100 hover:text-hotel-accent transition duration-300">Contacto</a></li>
+                        <li><a href="politicas.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Políticas y FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Servicios Destacados</h3>
+                     <ul class="space-y-3">
+                        <li><a href="services.html#restaurant" class="text-blue-100 hover:text-hotel-accent transition duration-300">Restaurante</a></li>
+                        <li><a href="services.html#spa" class="text-blue-100 hover:text-hotel-accent transition duration-300">Spa & Bienestar</a></li>
+                        <li><a href="services.html#pool" class="text-blue-100 hover:text-hotel-accent transition duration-300">Piscina Infinita</a></li>
+                        <li><a href="services.html#concierge" class="text-blue-100 hover:text-hotel-accent transition duration-300">Conserjería</a></li>
+                         <li><a href="index.html#contact" class="text-blue-100 hover:text-hotel-accent transition duration-300">Eventos y Reuniones</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Boletín</h3>
+                    <p class="text-blue-100 mb-6">Suscríbase para recibir ofertas exclusivas y novedades.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Su email" class="p-4 rounded-l-lg w-full focus:outline-none text-gray-800 dark:bg-slate-600 dark:text-white dark:placeholder-slate-400">
+                        <button type="submit" class="bg-hotel-accent hover:bg-hotel-primary px-6 rounded-r-lg transition duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-blue-800/30 mt-8 sm:mt-12 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center">
+                <p class="text-blue-100 text-center sm:text-left">&copy; 2025 Ocean View Hotel. Todos los derechos reservados.</p>
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="#" class="text-blue-100 hover:text-hotel-accent transition duration-300">Términos</a>
+                    <a href="#" class="text-blue-100 hover:text-hotel-accent transition duration-300">Privacidad</a>
+                    <a href="politicas.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Políticas</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <button id="chat-button" class="chat-button">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div id="chat-container">
+            <div class="chat-header">
+                <h3>Asistente Virtual</h3>
+                <button id="close-chat">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="chat-messages"></div>
+            <div class="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Escribe tu mensaje...">
+                <button id="send-button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+             <div class="whatsapp-section">
+                <button class="whatsapp-button" onclick="openWhatsApp()">
+                    <i class="fab fa-whatsapp"></i>
+                    Chatear por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <a href="#" id="back-to-top-btn" class="fixed bottom-5 left-5 z-50 p-3 bg-hotel-accent text-white rounded-full shadow-lg hover:bg-hotel-primary transition duration-300 opacity-0 visibility-hidden translate-y-4">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="js/chat.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 

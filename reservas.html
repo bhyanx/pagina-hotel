@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas - Ocean View Hotel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'hotel-blue': '#1e40af',
+                        'hotel-white': '#ffffff',
+                        'hotel-accent': '#f59e0b',
+                        'hotel-light': '#f3f4f6',
+                        'hotel-dark': '#1f2937',
+                        'hotel-primary': '#3b82f6',
+                        'hotel-secondary': '#10b981'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- Flatpickr CSS para el selector de fechas -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
+</head>
+<body class="font-sans bg-hotel-white text-gray-800">
+    <!-- Page Loader -->
+    <div id="page-loader" class="fixed inset-0 z-[100] flex items-center justify-center bg-white dark:bg-slate-800">
+        <div class="loader-spinner border-4 border-t-4 border-gray-200 dark:border-slate-600 border-t-hotel-primary dark:border-t-blue-400 rounded-full w-12 h-12 animate-spin"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="bg-gradient-to-r from-hotel-blue to-hotel-primary text-white shadow-lg fixed w-full z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html#home"><img src="img/logo/logo.png" alt="Ocean View Hotel Logo" class="h-10 sm:h-12 md:h-14 mr-4"></a>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html#home" class="hover:text-hotel-accent transition duration-300">Inicio</a>
+                <a href="index.html#rooms" class="hover:text-hotel-accent transition duration-300">Habitaciones</a>
+                <a href="services.html" class="hover:text-hotel-accent transition duration-300">Servicios</a>
+                <a href="actividades.html" class="hover:text-hotel-accent transition duration-300">Actividades</a>
+                <a href="index.html#gallery" class="hover:text-hotel-accent transition duration-300">Galería</a>
+                <a href="index.html#contact" class="hover:text-hotel-accent transition duration-300">Contacto</a>
+                <a href="politicas.html" class="hover:text-hotel-accent transition duration-300">Políticas</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <!-- Dark Mode Toggle Button -->
+                <button id="dark-mode-toggle" class="text-white text-xl hover:text-hotel-accent transition duration-300">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-white text-2xl hover:text-hotel-accent transition duration-300">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden bg-gradient-to-b from-hotel-blue to-hotel-primary text-white py-4 px-4 md:hidden">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html#home" class="hover:text-hotel-accent transition duration-300">Inicio</a>
+                <a href="index.html#rooms" class="hover:text-hotel-accent transition duration-300">Habitaciones</a>
+                <a href="services.html" class="hover:text-hotel-accent transition duration-300">Servicios</a>
+                <a href="actividades.html" class="hover:text-hotel-accent transition duration-300">Actividades</a>
+                <a href="index.html#gallery" class="hover:text-hotel-accent transition duration-300">Galería</a>
+                <a href="index.html#contact" class="hover:text-hotel-accent transition duration-300">Contacto</a>
+                <a href="politicas.html" class="hover:text-hotel-accent transition duration-300">Políticas</a>
+                <!-- Dark Mode Toggle in Mobile Menu -->
+                <button id="dark-mode-toggle-mobile" class="mt-4 text-left w-full py-2 px-3 rounded hover:bg-hotel-blue flex items-center">
+                    <i class="fas fa-moon mr-2"></i> Modo Oscuro
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="pt-24 sm:pt-28 pb-16">
+        <section class="py-12 sm:py-20 bg-hotel-light dark:bg-slate-800">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12 sm:mb-16 animate-on-scroll fade-in-up">
+                    <h1 class="text-4xl sm:text-5xl font-bold text-hotel-dark dark:text-white mb-4">Reservas</h1>
+                    <p class="text-gray-600 dark:text-slate-400 max-w-3xl mx-auto text-lg">Planifique su estancia perfecta en Ocean View Hotel. Complete el formulario para verificar disponibilidad y realizar su reserva.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Formulario de Reserva -->
+                    <div class="lg:col-span-2">
+                        <div class="bg-white dark:bg-slate-700 rounded-2xl shadow-lg p-8 animate-on-scroll fade-in-up">
+                            <h2 class="text-2xl font-bold text-hotel-dark dark:text-white mb-6 border-b-2 border-hotel-accent pb-2">Detalles de la Reserva</h2>
+                            
+                            <form id="reservation-form" class="space-y-6">
+                                <!-- Tipo de Reserva -->
+                                <div>
+                                    <label class="block text-hotel-dark dark:text-white font-medium mb-2">Tipo de Reserva</label>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div class="relative">
+                                            <input type="radio" id="room-reservation" name="reservation-type" value="room" class="peer hidden" checked>
+                                            <label for="room-reservation" class="flex items-center justify-center p-4 border-2 border-gray-200 dark:border-slate-600 rounded-lg cursor-pointer peer-checked:border-hotel-accent peer-checked:bg-hotel-accent/10 transition duration-300">
+                                                <i class="fas fa-bed mr-2 text-hotel-primary dark:text-blue-400"></i>
+                                                <span>Habitación</span>
+                                            </label>
+                                        </div>
+                                        <div class="relative">
+                                            <input type="radio" id="service-reservation" name="reservation-type" value="service" class="peer hidden">
+                                            <label for="service-reservation" class="flex items-center justify-center p-4 border-2 border-gray-200 dark:border-slate-600 rounded-lg cursor-pointer peer-checked:border-hotel-accent peer-checked:bg-hotel-accent/10 transition duration-300">
+                                                <i class="fas fa-concierge-bell mr-2 text-hotel-primary dark:text-blue-400"></i>
+                                                <span>Servicio</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Fechas de Estancia -->
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="check-in" class="block text-hotel-dark dark:text-white font-medium mb-2">Fecha de Llegada</label>
+                                        <div class="relative">
+                                            <i class="fas fa-calendar-alt absolute left-3 top-1/2 transform -translate-y-1/2 text-hotel-primary dark:text-blue-400"></i>
+                                            <input type="text" id="check-in" class="w-full p-3 pl-10 border border-gray-200 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotel-accent focus:border-transparent bg-hotel-light dark:bg-slate-800 dark:text-white" placeholder="Seleccione fecha">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="check-out" class="block text-hotel-dark dark:text-white font-medium mb-2">Fecha de Salida</label>
+                                        <div class="relative">
+                                            <i class="fas fa-calendar-alt absolute left-3 top-1/2 transform -translate-y-1/2 text-hotel-primary dark:text-blue-400"></i>
+                                            <input type="text" id="check-out" class="w-full p-3 pl-10 border border-gray-200 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotel-accent focus:border-transparent bg-hotel-light dark:bg-slate-800 dark:text-white" placeholder="Seleccione fecha">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tipo de Habitación (visible solo para reservas de habitación) -->
+                                <div id="room-type-section">
+                                    <label for="room-type" class="block text-hotel-dark dark:text-white font-medium mb-2">Tipo de Habitación</label>
+                                    <div class="relative">
+                                        <i class="fas fa-bed absolute left-3 top-1/2 transform -translate-y-1/2 text-hotel-primary dark:text-blue-400"></i>
+                                        <select id="room-type" class="w-full p-3 pl-10 border border-gray-200 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotel-accent focus:border-transparent bg-hotel-light dark:bg-slate-800 dark:text-white appearance-none">
+                                            <option value="standard">Habitación Estándar</option>
+                                            <option value="deluxe">Suite Deluxe</option>
+                                            <option value="presidential">Villa Presidencial</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-hotel-primary dark:text-blue-400 pointer-events-none"></i>
+                                    </div>
+                                </div>
+
+                                <!-- Tipo de Servicio (visible solo para reservas de servicio) -->
+                                <div id="service-type-section" class="hidden">
+                                    <label for="service-type" class="block text-hotel-dark dark:text-white font-medium mb-2">Tipo de Servicio</label>
+                                    <div class="relative">
+                                        <i class="fas fa-concierge-bell absolute left-3 top-1/2 transform -translate-y-1/2 text-hotel-primary dark:text-blue-400"></i>
+                                        <select id="service-type" class="w-full p-3 pl-10 border border-gray-200 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotel-accent focus:border-transparent bg-hotel-light dark:bg-slate-800 dark:text-white appearance-none">
+                                            <option value="spa">Spa & Bienestar</option>
+                                            <option value="restaurant">Restaurante</option>
+                                            <option value="event">Evento</option>
+                                            <option value="transport">Transporte</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-hotel-primary dark:text-blue-400 pointer-events-none"></i>
+                                    </div>
+                                </div>
+
+                                <!-- Número de Huéspedes -->
+                                <div>
+                                    <label for="guests" class="block text-hotel-dark dark:text-white font-medium mb-2">Número de Huéspedes</label>
+                                    <div class="relative">
+                                        <i class="fas fa-user absolute left-3 top-1/2 transform -translate-y-1/2 text-hotel-primary dark:text-blue-400"></i>
+                                        <select id="guests" class="w-full p-3 pl-10 border border-gray-200 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotel-accent focus:border-transparent bg-hotel-light dark:bg-slate-800 dark:text-white appearance-none">
+                                            <option value="1">1 Adulto</option>
+                                            <option value="2">2 Adultos</option>
+                                            <option value="3">2 Adultos, 1 Niño</option>
+                                            <option value="4">2 Adultos, 2 Niños</option>
+                                            <option value="5">3 Adultos, 2 Niños</option>
+                                            <option value="6">4 Adultos, 2 Niños</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-hotel-primary dark:text-blue-400 pointer-events-none"></i>
+                                    </div>
+                                </div>
+
+                                <!-- Información de Contacto -->
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="name" class="block text-hotel-dark dark:text-white font-medium mb-2">Nombre Completo</label>
+                                        <div class="relative">
+                                            <i class="fas fa-user absolute left-3 top-1/2 transform -translate-y-1/2 text-hotel-primary dark:text-blue-400"></i>
+                                            <input type="text" id="name" class="w-full p-3 pl-10 border border-gray-200 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotel-accent focus:border-transparent bg-hotel-light dark:bg-slate-800 dark:text-white" placeholder="Su nombre completo">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block text-hotel-dark dark:text-white font-medium mb-2">Correo Electrónico</label>
+                                        <div class="relative">
+                                            <i class="fas fa-envelope absolute left-3 top-1/2 transform -translate-y-1/2 text-hotel-primary dark:text-blue-400"></i>
+                                            <input type="email" id="email" class="w-full p-3 pl-10 border border-gray-200 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotel-accent focus:border-transparent bg-hotel-light dark:bg-slate-800 dark:text-white" placeholder="Su correo electrónico">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="phone" class="block text-hotel-dark dark:text-white font-medium mb-2">Teléfono</label>
+                                        <div class="relative">
+                                            <i class="fas fa-phone absolute left-3 top-1/2 transform -translate-y-1/2 text-hotel-primary dark:text-blue-400"></i>
+                                            <input type="tel" id="phone" class="w-full p-3 pl-10 border border-gray-200 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotel-accent focus:border-transparent bg-hotel-light dark:bg-slate-800 dark:text-white" placeholder="Su número de teléfono">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="document" class="block text-hotel-dark dark:text-white font-medium mb-2">Documento de Identidad</label>
+                                        <div class="relative">
+                                            <i class="fas fa-id-card absolute left-3 top-1/2 transform -translate-y-1/2 text-hotel-primary dark:text-blue-400"></i>
+                                            <input type="text" id="document" class="w-full p-3 pl-10 border border-gray-200 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotel-accent focus:border-transparent bg-hotel-light dark:bg-slate-800 dark:text-white" placeholder="DNI o Pasaporte">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Solicitudes Especiales -->
+                                <div>
+                                    <label for="special-requests" class="block text-hotel-dark dark:text-white font-medium mb-2">Solicitudes Especiales</label>
+                                    <textarea id="special-requests" rows="3" class="w-full p-3 border border-gray-200 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-hotel-accent focus:border-transparent bg-hotel-light dark:bg-slate-800 dark:text-white" placeholder="Indique cualquier solicitud especial o preferencia"></textarea>
+                                </div>
+
+                                <!-- Botón de Envío -->
+                                <div>
+                                    <button type="submit" class="w-full bg-hotel-accent hover:bg-yellow-500 text-white py-4 px-6 rounded-lg transition duration-300 font-medium shadow-lg hover:shadow-xl">
+                                        <i class="fas fa-check-circle mr-2"></i>Verificar Disponibilidad
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Resumen de Reserva -->
+                    <div class="lg:col-span-1">
+                        <div class="bg-white dark:bg-slate-700 rounded-2xl shadow-lg p-8 animate-on-scroll fade-in-up" style="animation-delay: 0.1s;">
+                            <h2 class="text-2xl font-bold text-hotel-dark dark:text-white mb-6 border-b-2 border-hotel-accent pb-2">Resumen</h2>
+                            
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600 dark:text-slate-300">Noches:</span>
+                                    <span id="nights-count" class="font-semibold text-hotel-dark dark:text-white">0</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600 dark:text-slate-300">Habitación:</span>
+                                    <span id="room-summary" class="font-semibold text-hotel-dark dark:text-white">-</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600 dark:text-slate-300">Huéspedes:</span>
+                                    <span id="guests-summary" class="font-semibold text-hotel-dark dark:text-white">-</span>
+                                </div>
+                                <div class="border-t border-gray-200 dark:border-slate-600 pt-4 mt-4">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-lg font-semibold text-hotel-dark dark:text-white">Total Estimado:</span>
+                                        <span id="total-price" class="text-2xl font-bold text-hotel-accent">S/. 0.00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Información Adicional -->
+                            <div class="mt-8 p-4 bg-hotel-light dark:bg-slate-800 rounded-lg">
+                                <h3 class="font-semibold text-hotel-dark dark:text-white mb-2">Información Importante</h3>
+                                <ul class="text-sm text-gray-600 dark:text-slate-300 space-y-2">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-info-circle text-hotel-primary dark:text-blue-400 mt-1 mr-2"></i>
+                                        <span>La hora de check-in es a las 15:00 y check-out a las 12:00</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-info-circle text-hotel-primary dark:text-blue-400 mt-1 mr-2"></i>
+                                        <span>Se requiere un depósito para confirmar la reserva</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-info-circle text-hotel-primary dark:text-blue-400 mt-1 mr-2"></i>
+                                        <span>Política de cancelación: 48 horas antes de la llegada</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Contacto de Emergencia -->
+                            <div class="mt-6 text-center">
+                                <p class="text-gray-600 dark:text-slate-300 mb-2">¿Necesita ayuda con su reserva?</p>
+                                <a href="tel:+51999999999" class="inline-flex items-center justify-center bg-hotel-primary hover:bg-hotel-blue text-white py-2 px-4 rounded-lg transition duration-300">
+                                    <i class="fas fa-phone mr-2"></i>
+                                    Llamar ahora
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-hotel-blue to-hotel-primary text-white py-12 sm:py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
+                <div>
+                    <a href="index.html#home"><img src="img/logo-white.png" alt="Ocean View Hotel Logo" class="h-14 mb-6"></a>
+                    <p class="text-blue-100">Experiencias inolvidables en un entorno de lujo y confort frente al mar.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Enlaces rápidos</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html#home" class="text-blue-100 hover:text-hotel-accent transition duration-300">Inicio</a></li>
+                        <li><a href="index.html#rooms" class="text-blue-100 hover:text-hotel-accent transition duration-300">Habitaciones</a></li>
+                        <li><a href="services.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Servicios</a></li>
+                        <li><a href="actividades.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Actividades</a></li>
+                        <li><a href="index.html#gallery" class="text-blue-100 hover:text-hotel-accent transition duration-300">Galería</a></li>
+                        <li><a href="index.html#contact" class="text-blue-100 hover:text-hotel-accent transition duration-300">Contacto</a></li>
+                        <li><a href="politicas.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Políticas y FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Servicios Destacados</h3>
+                    <ul class="space-y-3">
+                        <li><a href="services.html#restaurant" class="text-blue-100 hover:text-hotel-accent transition duration-300">Restaurante</a></li>
+                        <li><a href="services.html#spa" class="text-blue-100 hover:text-hotel-accent transition duration-300">Spa & Bienestar</a></li>
+                        <li><a href="services.html#pool" class="text-blue-100 hover:text-hotel-accent transition duration-300">Piscina Infinita</a></li>
+                        <li><a href="services.html#concierge" class="text-blue-100 hover:text-hotel-accent transition duration-300">Conserjería</a></li>
+                        <li><a href="index.html#contact" class="text-blue-100 hover:text-hotel-accent transition duration-300">Eventos y Reuniones</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Boletín</h3>
+                    <p class="text-blue-100 mb-6">Suscríbase para recibir ofertas exclusivas y novedades.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Su email" class="p-4 rounded-l-lg w-full focus:outline-none text-gray-800 dark:bg-slate-600 dark:text-white dark:placeholder-slate-400">
+                        <button type="submit" class="bg-hotel-accent hover:bg-hotel-primary px-6 rounded-r-lg transition duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-blue-800/30 mt-8 sm:mt-12 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center">
+                <p class="text-blue-100 text-center sm:text-left">&copy; 2025 Ocean View Hotel. Todos los derechos reservados.</p>
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="#" class="text-blue-100 hover:text-hotel-accent transition duration-300">Términos</a>
+                    <a href="#" class="text-blue-100 hover:text-hotel-accent transition duration-300">Privacidad</a>
+                    <a href="politicas.html" class="text-blue-100 hover:text-hotel-accent transition duration-300">Políticas</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <button id="chat-button" class="chat-button">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div id="chat-container">
+            <div class="chat-header">
+                <h3>Asistente Virtual</h3>
+                <button id="close-chat">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="chat-messages"></div>
+            <div class="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Escribe tu mensaje...">
+                <button id="send-button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            <div class="whatsapp-section">
+                <button class="whatsapp-button" onclick="openWhatsApp()">
+                    <i class="fab fa-whatsapp"></i>
+                    Chatear por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <a href="#" id="back-to-top-btn" class="fixed bottom-5 left-5 z-50 p-3 bg-hotel-accent text-white rounded-full shadow-lg hover:bg-hotel-primary transition duration-300 opacity-0 visibility-hidden translate-y-4">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Inicializar Flatpickr para los selectores de fecha
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configuración común para ambos selectores de fecha
+            const dateConfig = {
+                locale: 'es',
+                dateFormat: 'd/m/Y',
+                minDate: 'today',
+                disableMobile: true,
+                onChange: function(selectedDates, dateStr, instance) {
+                    updateReservationSummary();
+                }
+            };
+
+            // Inicializar selector de fecha de llegada
+            const checkInPicker = flatpickr('#check-in', dateConfig);
+
+            // Inicializar selector de fecha de salida
+            const checkOutPicker = flatpickr('#check-out', {
+                ...dateConfig,
+                onChange: function(selectedDates, dateStr, instance) {
+                    // Asegurarse de que la fecha de salida sea posterior a la de llegada
+                    const checkInDate = checkInPicker.selectedDates[0];
+                    if (checkInDate && selectedDates[0] < checkInDate) {
+                        instance.setDate(checkInDate);
+                    }
+                    updateReservationSummary();
+                }
+            });
+
+            // Actualizar fecha mínima de salida cuando se selecciona fecha de llegada
+            checkInPicker.config.onChange = function(selectedDates, dateStr, instance) {
+                if (selectedDates[0]) {
+                    const nextDay = new Date(selectedDates[0]);
+                    nextDay.setDate(nextDay.getDate() + 1);
+                    checkOutPicker.set('minDate', nextDay);
+                    
+                    // Si la fecha de salida es anterior a la nueva fecha de llegada, actualizarla
+                    const currentCheckOut = checkOutPicker.selectedDates[0];
+                    if (currentCheckOut && currentCheckOut < nextDay) {
+                        checkOutPicker.setDate(nextDay);
+                    }
+                }
+                updateReservationSummary();
+            };
+
+            // Cambiar entre tipos de reserva
+            const roomReservation = document.getElementById('room-reservation');
+            const serviceReservation = document.getElementById('service-reservation');
+            const roomTypeSection = document.getElementById('room-type-section');
+            const serviceTypeSection = document.getElementById('service-type-section');
+
+            roomReservation.addEventListener('change', function() {
+                roomTypeSection.classList.remove('hidden');
+                serviceTypeSection.classList.add('hidden');
+                updateReservationSummary();
+            });
+
+            serviceReservation.addEventListener('change', function() {
+                roomTypeSection.classList.add('hidden');
+                serviceTypeSection.classList.remove('hidden');
+                updateReservationSummary();
+            });
+
+            // Actualizar resumen cuando cambian los valores
+            document.getElementById('room-type').addEventListener('change', updateReservationSummary);
+            document.getElementById('service-type').addEventListener('change', updateReservationSummary);
+            document.getElementById('guests').addEventListener('change', updateReservationSummary);
+
+            // Función para actualizar el resumen de la reserva
+            function updateReservationSummary() {
+                const checkIn = document.getElementById('check-in').value;
+                const checkOut = document.getElementById('check-out').value;
+                const roomType = document.getElementById('room-type');
+                const serviceType = document.getElementById('service-type');
+                const guests = document.getElementById('guests');
+                const isRoomReservation = document.getElementById('room-reservation').checked;
+
+                // Calcular número de noches
+                let nights = 0;
+                if (checkIn && checkOut) {
+                    const checkInDate = new Date(checkIn.split('/').reverse().join('-'));
+                    const checkOutDate = new Date(checkOut.split('/').reverse().join('-'));
+                    const diffTime = Math.abs(checkOutDate - checkInDate);
+                    nights = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                }
+
+                // Actualizar resumen
+                document.getElementById('nights-count').textContent = nights;
+
+                if (isRoomReservation) {
+                    const roomTypeText = roomType.options[roomType.selectedIndex].text;
+                    document.getElementById('room-summary').textContent = roomTypeText;
+                    document.getElementById('guests-summary').textContent = guests.options[guests.selectedIndex].text;
+
+                    // Calcular precio total
+                    let pricePerNight = 0;
+                    switch (roomType.value) {
+                        case 'standard':
+                            pricePerNight = 120;
+                            break;
+                        case 'deluxe':
+                            pricePerNight = 250;
+                            break;
+                        case 'presidential':
+                            pricePerNight = 450;
+                            break;
+                    }
+                    const totalPrice = pricePerNight * nights;
+                    document.getElementById('total-price').textContent = `S/. ${totalPrice.toFixed(2)}`;
+                } else {
+                    document.getElementById('room-summary').textContent = '-';
+                    document.getElementById('guests-summary').textContent = guests.options[guests.selectedIndex].text;
+
+                    // Calcular precio total para servicios
+                    let servicePrice = 0;
+                    switch (serviceType.value) {
+                        case 'spa':
+                            servicePrice = 150;
+                            break;
+                        case 'restaurant':
+                            servicePrice = 80;
+                            break;
+                        case 'event':
+                            servicePrice = 500;
+                            break;
+                        case 'transport':
+                            servicePrice = 60;
+                            break;
+                    }
+                    document.getElementById('total-price').textContent = `S/. ${servicePrice.toFixed(2)}`;
+                }
+            }
+
+            // Manejar envío del formulario
+            document.getElementById('reservation-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Aquí iría la lógica para enviar los datos al servidor
+                // Por ahora, solo mostraremos un mensaje de éxito
+                alert('¡Gracias por su reserva! Nos pondremos en contacto con usted para confirmar los detalles.');
+            });
+        });
+    </script>
+</body>
+</html> 
