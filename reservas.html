@@ -376,14 +376,70 @@
         <i class="fas fa-arrow-up"></i>
     </a>
 
+    <!-- Modal de Error -->
+    <div id="error-modal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black bg-opacity-70 p-4 transition-opacity duration-300 opacity-0">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-xl w-full max-w-md p-6 md:p-8 relative scale-95 transition-transform duration-300 transform">
+            <button id="close-error-modal" class="absolute top-4 right-4 text-gray-500 dark:text-gray-400 hover:text-hotel-dark dark:hover:text-white text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-exclamation-triangle text-red-500 dark:text-red-400 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-hotel-dark dark:text-white mb-2">Error en el formulario</h3>
+                <p id="error-message" class="text-gray-600 dark:text-slate-300 mb-6">Por favor corrija los errores en el formulario antes de continuar.</p>
+                <button id="error-modal-ok" class="bg-hotel-accent hover:bg-yellow-500 text-white py-2 px-6 rounded-lg transition duration-300 font-medium">
+                    Entendido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmación -->
+    <div id="success-modal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black bg-opacity-70 p-4 transition-opacity duration-300 opacity-0">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-xl w-full max-w-md p-6 md:p-8 relative scale-95 transition-transform duration-300 transform">
+            <button id="close-success-modal" class="absolute top-4 right-4 text-gray-500 dark:text-gray-400 hover:text-hotel-dark dark:hover:text-white text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-check-circle text-green-500 dark:text-green-400 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-hotel-dark dark:text-white mb-2">¡Reserva enviada con éxito!</h3>
+                <p id="success-message" class="text-gray-600 dark:text-slate-300 mb-6">Gracias por su reserva. Nos pondremos en contacto con usted para confirmar los detalles.</p>
+                <button id="success-modal-ok" class="bg-hotel-accent hover:bg-yellow-500 text-white py-2 px-6 rounded-lg transition duration-300 font-medium">
+                    Aceptar
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
     <script src="js/chat.js"></script>
     <script src="js/main.js"></script>
     <script>
-        // Inicializar Flatpickr para los selectores de fecha
+        // Función para depuración
+        function debug(message) {
+            console.log(`[DEBUG] ${message}`);
+        }
+
+        // Esperar a que el DOM esté completamente cargado
         document.addEventListener('DOMContentLoaded', function() {
+            debug('DOM cargado completamente');
+            
+            // Ocultar el loader de página
+            const pageLoader = document.getElementById('page-loader');
+            if (pageLoader) {
+                setTimeout(() => {
+                    pageLoader.style.opacity = '0';
+                    setTimeout(() => {
+                        pageLoader.style.display = 'none';
+                    }, 500);
+                }, 500);
+            }
+
             // Configuración común para ambos selectores de fecha
             const dateConfig = {
                 locale: 'es',
@@ -433,22 +489,28 @@
             const roomTypeSection = document.getElementById('room-type-section');
             const serviceTypeSection = document.getElementById('service-type-section');
 
-            roomReservation.addEventListener('change', function() {
-                roomTypeSection.classList.remove('hidden');
-                serviceTypeSection.classList.add('hidden');
-                updateReservationSummary();
-            });
+            if (roomReservation && serviceReservation) {
+                roomReservation.addEventListener('change', function() {
+                    roomTypeSection.classList.remove('hidden');
+                    serviceTypeSection.classList.add('hidden');
+                    updateReservationSummary();
+                });
 
-            serviceReservation.addEventListener('change', function() {
-                roomTypeSection.classList.add('hidden');
-                serviceTypeSection.classList.remove('hidden');
-                updateReservationSummary();
-            });
+                serviceReservation.addEventListener('change', function() {
+                    roomTypeSection.classList.add('hidden');
+                    serviceTypeSection.classList.remove('hidden');
+                    updateReservationSummary();
+                });
+            }
 
             // Actualizar resumen cuando cambian los valores
-            document.getElementById('room-type').addEventListener('change', updateReservationSummary);
-            document.getElementById('service-type').addEventListener('change', updateReservationSummary);
-            document.getElementById('guests').addEventListener('change', updateReservationSummary);
+            const roomType = document.getElementById('room-type');
+            const serviceType = document.getElementById('service-type');
+            const guests = document.getElementById('guests');
+
+            if (roomType) roomType.addEventListener('change', updateReservationSummary);
+            if (serviceType) serviceType.addEventListener('change', updateReservationSummary);
+            if (guests) guests.addEventListener('change', updateReservationSummary);
 
             // Función para actualizar el resumen de la reserva
             function updateReservationSummary() {
@@ -469,12 +531,16 @@
                 }
 
                 // Actualizar resumen
-                document.getElementById('nights-count').textContent = nights;
+                const nightsCount = document.getElementById('nights-count');
+                if (nightsCount) nightsCount.textContent = nights;
 
                 if (isRoomReservation) {
                     const roomTypeText = roomType.options[roomType.selectedIndex].text;
-                    document.getElementById('room-summary').textContent = roomTypeText;
-                    document.getElementById('guests-summary').textContent = guests.options[guests.selectedIndex].text;
+                    const roomSummary = document.getElementById('room-summary');
+                    const guestsSummary = document.getElementById('guests-summary');
+                    
+                    if (roomSummary) roomSummary.textContent = roomTypeText;
+                    if (guestsSummary) guestsSummary.textContent = guests.options[guests.selectedIndex].text;
 
                     // Calcular precio total
                     let pricePerNight = 0;
@@ -490,10 +556,14 @@
                             break;
                     }
                     const totalPrice = pricePerNight * nights;
-                    document.getElementById('total-price').textContent = `S/. ${totalPrice.toFixed(2)}`;
+                    const totalPriceElement = document.getElementById('total-price');
+                    if (totalPriceElement) totalPriceElement.textContent = `S/. ${totalPrice.toFixed(2)}`;
                 } else {
-                    document.getElementById('room-summary').textContent = '-';
-                    document.getElementById('guests-summary').textContent = guests.options[guests.selectedIndex].text;
+                    const roomSummary = document.getElementById('room-summary');
+                    const guestsSummary = document.getElementById('guests-summary');
+                    
+                    if (roomSummary) roomSummary.textContent = '-';
+                    if (guestsSummary) guestsSummary.textContent = guests.options[guests.selectedIndex].text;
 
                     // Calcular precio total para servicios
                     let servicePrice = 0;
@@ -511,18 +581,355 @@
                             servicePrice = 60;
                             break;
                     }
-                    document.getElementById('total-price').textContent = `S/. ${servicePrice.toFixed(2)}`;
+                    const totalPriceElement = document.getElementById('total-price');
+                    if (totalPriceElement) totalPriceElement.textContent = `S/. ${servicePrice.toFixed(2)}`;
                 }
             }
 
-            // Manejar envío del formulario
-            document.getElementById('reservation-form').addEventListener('submit', function(e) {
-                e.preventDefault();
+            // Funciones de validación
+            function validateEmail(email) {
+                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
+            }
+
+            function validatePhone(phone) {
+                // Validar formato de teléfono peruano (9 dígitos)
+                const re = /^[0-9]{9}$/;
+                return re.test(String(phone).replace(/\s+/g, ''));
+            }
+
+            function validateDocument(document) {
+                // Validar DNI peruano (8 dígitos) o pasaporte (mínimo 6 caracteres)
+                const dniRe = /^[0-9]{8}$/;
+                const passportRe = /^[A-Za-z0-9]{6,}$/;
+                return dniRe.test(String(document)) || passportRe.test(String(document));
+            }
+
+            function showError(input, message) {
+                const formControl = input.parentElement;
+                const errorElement = formControl.querySelector('.error-message') || document.createElement('div');
+                errorElement.className = 'error-message text-red-500 text-sm mt-1';
+                errorElement.textContent = message;
                 
-                // Aquí iría la lógica para enviar los datos al servidor
-                // Por ahora, solo mostraremos un mensaje de éxito
-                alert('¡Gracias por su reserva! Nos pondremos en contacto con usted para confirmar los detalles.');
-            });
+                if (!formControl.querySelector('.error-message')) {
+                    formControl.appendChild(errorElement);
+                }
+                
+                input.classList.add('border-red-500');
+            }
+
+            function removeError(input) {
+                const formControl = input.parentElement;
+                const errorElement = formControl.querySelector('.error-message');
+                
+                if (errorElement) {
+                    formControl.removeChild(errorElement);
+                }
+                
+                input.classList.remove('border-red-500');
+            }
+
+            // Funciones simplificadas para mostrar y ocultar modales
+            function showModal(modalId) {
+                debug(`Mostrando modal: ${modalId}`);
+                const modal = document.getElementById(modalId);
+                if (!modal) {
+                    console.error(`Modal no encontrado: ${modalId}`);
+                    return;
+                }
+                
+                // Mostrar el modal
+                modal.style.display = 'flex';
+                modal.classList.remove('opacity-0');
+                
+                const modalContent = modal.querySelector('div');
+                if (modalContent) {
+                    modalContent.classList.remove('scale-95');
+                    modalContent.classList.add('scale-100');
+                }
+            }
+            
+            function hideModal(modalId) {
+                debug(`Ocultando modal: ${modalId}`);
+                const modal = document.getElementById(modalId);
+                if (!modal) {
+                    console.error(`Modal no encontrado: ${modalId}`);
+                    return;
+                }
+                
+                // Iniciar animación de salida
+                modal.classList.add('opacity-0');
+                
+                const modalContent = modal.querySelector('div');
+                if (modalContent) {
+                    modalContent.classList.remove('scale-100');
+                    modalContent.classList.add('scale-95');
+                }
+                
+                // Esperar a que termine la animación antes de ocultar
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300);
+            }
+            
+            // Configurar eventos para cerrar modales
+            const closeErrorModal = document.getElementById('close-error-modal');
+            const errorModalOk = document.getElementById('error-modal-ok');
+            const closeSuccessModal = document.getElementById('close-success-modal');
+            const successModalOk = document.getElementById('success-modal-ok');
+            
+            if (closeErrorModal) {
+                closeErrorModal.addEventListener('click', function() {
+                    hideModal('error-modal');
+                });
+            }
+            
+            if (errorModalOk) {
+                errorModalOk.addEventListener('click', function() {
+                    hideModal('error-modal');
+                });
+            }
+            
+            if (closeSuccessModal) {
+                closeSuccessModal.addEventListener('click', function() {
+                    hideModal('success-modal');
+                });
+            }
+            
+            if (successModalOk) {
+                successModalOk.addEventListener('click', function() {
+                    hideModal('success-modal');
+                });
+            }
+            
+            // Cerrar modales al hacer clic fuera de ellos
+            const errorModal = document.getElementById('error-modal');
+            const successModal = document.getElementById('success-modal');
+            
+            if (errorModal) {
+                errorModal.addEventListener('click', function(e) {
+                    if (e.target === errorModal) {
+                        hideModal('error-modal');
+                    }
+                });
+            }
+            
+            if (successModal) {
+                successModal.addEventListener('click', function(e) {
+                    if (e.target === successModal) {
+                        hideModal('success-modal');
+                    }
+                });
+            }
+
+            // Manejar envío del formulario
+            const reservationForm = document.getElementById('reservation-form');
+            if (reservationForm) {
+                debug('Formulario de reserva encontrado, agregando event listener');
+                
+                reservationForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    debug('Formulario enviado');
+                    
+                    let isValid = true;
+                    let errorMessages = [];
+                    const isRoomReservation = document.getElementById('room-reservation').checked;
+                    
+                    // Validar fechas
+                    const checkIn = document.getElementById('check-in').value;
+                    const checkOut = document.getElementById('check-out').value;
+                    
+                    if (!checkIn) {
+                        showError(document.getElementById('check-in'), 'Por favor seleccione una fecha de llegada');
+                        errorMessages.push('Seleccione una fecha de llegada');
+                        isValid = false;
+                    } else {
+                        removeError(document.getElementById('check-in'));
+                    }
+                    
+                    if (!checkOut) {
+                        showError(document.getElementById('check-out'), 'Por favor seleccione una fecha de salida');
+                        errorMessages.push('Seleccione una fecha de salida');
+                        isValid = false;
+                    } else {
+                        removeError(document.getElementById('check-out'));
+                    }
+                    
+                    // Validar tipo de habitación o servicio
+                    if (isRoomReservation) {
+                        const roomType = document.getElementById('room-type').value;
+                        if (!roomType) {
+                            showError(document.getElementById('room-type'), 'Por favor seleccione un tipo de habitación');
+                            errorMessages.push('Seleccione un tipo de habitación');
+                            isValid = false;
+                        } else {
+                            removeError(document.getElementById('room-type'));
+                        }
+                    } else {
+                        const serviceType = document.getElementById('service-type').value;
+                        if (!serviceType) {
+                            showError(document.getElementById('service-type'), 'Por favor seleccione un tipo de servicio');
+                            errorMessages.push('Seleccione un tipo de servicio');
+                            isValid = false;
+                        } else {
+                            removeError(document.getElementById('service-type'));
+                        }
+                    }
+                    
+                    // Validar número de huéspedes
+                    const guests = document.getElementById('guests').value;
+                    if (!guests) {
+                        showError(document.getElementById('guests'), 'Por favor seleccione el número de huéspedes');
+                        errorMessages.push('Seleccione el número de huéspedes');
+                        isValid = false;
+                    } else {
+                        removeError(document.getElementById('guests'));
+                    }
+                    
+                    // Validar nombre
+                    const name = document.getElementById('name').value.trim();
+                    if (!name) {
+                        showError(document.getElementById('name'), 'Por favor ingrese su nombre completo');
+                        errorMessages.push('Ingrese su nombre completo');
+                        isValid = false;
+                    } else {
+                        removeError(document.getElementById('name'));
+                    }
+                    
+                    // Validar email
+                    const email = document.getElementById('email').value.trim();
+                    if (!email) {
+                        showError(document.getElementById('email'), 'Por favor ingrese su correo electrónico');
+                        errorMessages.push('Ingrese su correo electrónico');
+                        isValid = false;
+                    } else if (!validateEmail(email)) {
+                        showError(document.getElementById('email'), 'Por favor ingrese un correo electrónico válido');
+                        errorMessages.push('Ingrese un correo electrónico válido');
+                        isValid = false;
+                    } else {
+                        removeError(document.getElementById('email'));
+                    }
+                    
+                    // Validar teléfono
+                    const phone = document.getElementById('phone').value.trim();
+                    if (!phone) {
+                        showError(document.getElementById('phone'), 'Por favor ingrese su número de teléfono');
+                        errorMessages.push('Ingrese su número de teléfono');
+                        isValid = false;
+                    } else if (!validatePhone(phone)) {
+                        showError(document.getElementById('phone'), 'Por favor ingrese un número de teléfono válido (9 dígitos)');
+                        errorMessages.push('Ingrese un número de teléfono válido (9 dígitos)');
+                        isValid = false;
+                    } else {
+                        removeError(document.getElementById('phone'));
+                    }
+                    
+                    // Validar documento
+                    const documentId = document.getElementById('document').value.trim();
+                    if (!documentId) {
+                        showError(document.getElementById('document'), 'Por favor ingrese su documento de identidad');
+                        errorMessages.push('Ingrese su documento de identidad');
+                        isValid = false;
+                    } else if (!validateDocument(documentId)) {
+                        showError(document.getElementById('document'), 'Por favor ingrese un DNI (8 dígitos) o pasaporte válido');
+                        errorMessages.push('Ingrese un DNI (8 dígitos) o pasaporte válido');
+                        isValid = false;
+                    } else {
+                        removeError(document.getElementById('document'));
+                    }
+                    
+                    if (!isValid) {
+                        debug('Formulario inválido, mostrando modal de error');
+                        // Mostrar modal de error con los mensajes
+                        const errorMessageElement = document.getElementById('error-message');
+                        if (errorMessageElement) {
+                            errorMessageElement.innerHTML = `
+                                <p class="mb-2">Por favor corrija los siguientes errores:</p>
+                                <ul class="text-left list-disc pl-5">
+                                    ${errorMessages.map(msg => `<li>${msg}</li>`).join('')}
+                                </ul>
+                            `;
+                        }
+                        
+                        // Forzar la visualización del modal de error
+                        const errorModal = document.getElementById('error-modal');
+                        if (errorModal) {
+                            errorModal.style.display = 'flex';
+                            errorModal.classList.remove('opacity-0');
+                            
+                            const modalContent = errorModal.querySelector('div');
+                            if (modalContent) {
+                                modalContent.classList.remove('scale-95');
+                                modalContent.classList.add('scale-100');
+                            }
+                        } else {
+                            console.error('Modal de error no encontrado');
+                        }
+                        
+                        return;
+                    }
+                    
+                    debug('Formulario válido, mostrando modal de éxito');
+                    // Si todo es válido, mostrar modal de éxito
+                    const roomTypeText = isRoomReservation 
+                        ? document.getElementById('room-type').options[document.getElementById('room-type').selectedIndex].text
+                        : document.getElementById('service-type').options[document.getElementById('service-type').selectedIndex].text;
+                    
+                    const nights = document.getElementById('nights-count').textContent;
+                    const totalPrice = document.getElementById('total-price').textContent;
+                    
+                    const successMessageElement = document.getElementById('success-message');
+                    if (successMessageElement) {
+                        successMessageElement.innerHTML = `
+                            <p class="mb-2">Su reserva ha sido enviada con éxito:</p>
+                            <ul class="text-left list-disc pl-5">
+                                <li>${isRoomReservation ? 'Habitación' : 'Servicio'}: ${roomTypeText}</li>
+                                <li>Fechas: ${checkIn} - ${checkOut} (${nights} noches)</li>
+                                <li>Total: ${totalPrice}</li>
+                            </ul>
+                            <p class="mt-2">Nos pondremos en contacto con usted para confirmar los detalles.</p>
+                        `;
+                    }
+                    
+                    // Forzar la visualización del modal de éxito
+                    const successModal = document.getElementById('success-modal');
+                    if (successModal) {
+                        successModal.style.display = 'flex';
+                        successModal.classList.remove('opacity-0');
+                        
+                        const modalContent = successModal.querySelector('div');
+                        if (modalContent) {
+                            modalContent.classList.remove('scale-95');
+                            modalContent.classList.add('scale-100');
+                        }
+                    } else {
+                        console.error('Modal de éxito no encontrado');
+                    }
+                    
+                    // Limpiar el formulario después de mostrar el modal
+                    reservationForm.reset();
+                    updateReservationSummary();
+                });
+            } else {
+                console.error('Formulario de reserva no encontrado');
+            }
+            
+            // Verificar que los modales existen
+            debug('Verificando existencia de modales');
+            const errorModalExists = document.getElementById('error-modal');
+            const successModalExists = document.getElementById('success-modal');
+            
+            if (errorModalExists) {
+                debug('Modal de error encontrado');
+            } else {
+                console.error('Modal de error no encontrado en el DOM');
+            }
+            
+            if (successModalExists) {
+                debug('Modal de éxito encontrado');
+            } else {
+                console.error('Modal de éxito no encontrado en el DOM');
+            }
         });
     </script>
 </body>
