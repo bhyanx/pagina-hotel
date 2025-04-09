@@ -65,7 +65,7 @@ hotel-website/
 
 1. **Clonar el repositorio**
    ```bash
-   git clone https://github.com/yourusername/hotel-website.git
+   git clone https://github.com/bhyanx/pagina-hotel.git
    ```
 
 2. **Navegar al directorio del proyecto**
@@ -124,7 +124,7 @@ Las contribuciones son bienvenidas. Para cambios importantes:
 
 ## 📞 Contacto
 
-- Website: [oceanviewhotel.com](https://oceanviewhotel.com)
+- Website: [oceanviewhotel.com](https://oceanviewhotel.netlify.app/)
 - Email: info@oceanviewhotel.com
 - LinkedIn: [Ocean View Hotel](https://linkedin.com/company/ocean-view-hotel)
 
@@ -135,7 +135,7 @@ Si encuentras útil este proyecto, ¡dale una estrella! ⭐
 ---
 
 <div align="center">
-  Desarrollado con ❤️ por [Tu Nombre](https://github.com/yourusername)
+  Desarrollado con ❤️ por [Bryan Sanchez Garcia](https://github.com/bhyanx)
   
   ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=yourusername.hotel-website)
 </div> 

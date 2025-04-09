@@ -171,7 +171,7 @@ function toggleChat() {
 
 // Función para abrir WhatsApp
 function openWhatsApp() {
-    window.open('https://wa.me/521234567890', '_blank');
+    window.open('https://wa.me/51900229651', '_blank');
 }
 
 // Event Listeners
