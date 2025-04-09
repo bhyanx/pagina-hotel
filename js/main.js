@@ -525,5 +525,5 @@ document.addEventListener('DOMContentLoaded', () => {
 // --- WhatsApp Functionality (If needed globally) ---
 function openWhatsApp() {
     // Replace with your WhatsApp number and default message if desired
-    window.open('https://wa.me/TUNUMERO?text=Hola%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n.', '_blank');
+    window.open('https://wa.me/51900229651?text=¡Hola!%20Me%20encantaría%20conocer%20más%20sobre%20Ocean%20View%20Hotel.%20¿Me%20podrías%20ayudar%20con%20información%20sobre%20sus%20habitaciones%20y%20servicios?', '_blank');
 }
