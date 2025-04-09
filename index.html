@@ -692,23 +692,6 @@
         </div>
     </div>
 
-    <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu when clicking a link
-        const mobileLinks = mobileMenu.getElementsByTagName('a');
-        for (let link of mobileLinks) {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        }
-    </script>
     <script src="js/mercadopago.js"></script>
     <script src="js/booking.js"></script>
     <script src="js/gallery.js"></script>

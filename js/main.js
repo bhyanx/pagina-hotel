@@ -129,8 +129,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenu = document.getElementById('mobile-menu');
 
     if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', () => {
+        // Toggle menu on button click
+        mobileMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
             mobileMenu.classList.toggle('hidden');
+            // Add/remove overflow hidden to body to prevent scrolling when menu is open
+            document.body.classList.toggle('overflow-hidden');
         });
 
         // Close mobile menu when clicking a link inside it
@@ -138,7 +142,24 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
             });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+        });
+
+        // Close menu on window resize (if screen becomes large)
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) { // 768px is typical md breakpoint
+                mobileMenu.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
         });
     }
 
